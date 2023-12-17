@@ -1,0 +1,22 @@
+.navegation_items {
+    color: white;
+    font-size: 1.2em;
+}
+.bg{
+   /*  background: url("../../../image/home/SOMBRA\ MENU.png");   */
+  background: rgba(0, 0, 0, 0.028);
+   
+}
+.user_avatar {
+    margin-right: 5em;
+    
+} 
+.user_avatar img{
+    width: 7em;
+}
+
+.buttons_Options {
+    margin-right: 7em;
+    margin-top: 5%;
+    
+} 

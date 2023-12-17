@@ -1,0 +1,149 @@
+.createavatar_container {
+}
+.btn_avatar{
+  width: 7em;
+  cursor: pointer;
+}
+.title_create_avatar {
+  margin-top: -10em;
+  top: 0;
+  position: fixed;
+  
+}
+.title_create_avatar img {
+  width: 20em;
+
+}
+.img_avatar {
+    position: fixed;
+    bottom: 0;
+    left: 37%;
+    transform: translateX(-50%);
+  }
+  
+  .img_avatar img {
+    width: 25em;
+  }
+  
+  .btn_exit img {
+    width: 6em;
+    cursor: pointer;
+
+  }
+  .btn_seconds{
+    margin-top: 10%;
+    display: grid;
+    gap: 2em;
+  
+
+  }
+
+  .menu {
+    display: grid;
+    justify-content: center;
+    margin-top: -32em;
+    margin-left: 65%;
+    background-color: white;
+    gap: 2px;
+    padding: 3px;
+    width: 30%;
+    box-shadow:0px 7px 15px #000 ;
+
+  }
+  .box_type {
+    display: flex;
+    gap: 2px;
+  }
+  
+  .type img{
+    cursor: pointer;
+
+  }
+  .type img:hover{
+    opacity: 0.2;
+
+  }
+
+
+  .datas {
+    display: grid;
+    justify-content: center;
+    margin-top: 2em;
+    margin-left: 65%;
+    background-color: white;
+    gap: 2px;
+    padding: 3px;
+    width: 30%;
+    box-shadow:0px 7px 15px #000 ;
+
+  }
+
+  .box_datas {
+    display: flex;
+    gap: 2px;
+  }
+
+  .seconds_data{
+    overflow: scroll;
+    overflow-x: hidden;
+  
+    
+  }
+
+  .eyes_avatar {
+    position: absolute;
+    margin-top: -100%;
+    margin-left: 25%;
+    max-width: 100%;
+  
+  }
+  .eyes_avatar img{
+    max-width: 100%;
+    width: 65%;
+  }
+
+@media (max-width: 1800px) {
+  .img_avatar img {
+    width: 15em;
+ max-width: 100%;
+
+  }
+  .btn_exit img {
+    width: 5em;
+    margin-left: -1em;
+    max-width: 100%;
+
+  }
+.btn_seconds{
+  margin-top: 5%;
+  gap: 1em;
+  max-width: 100%;
+
+
+}
+.menu {
+ 
+  margin-top: -23em;
+ max-width: 100%;
+
+}
+.datas {
+height: 12em;
+max-width: 100%;
+
+
+}
+
+.eyes_avatar {
+  position: absolute;
+  margin-top: -100%;
+  margin-left: 28%;
+  max-width: 100%;
+
+}
+.eyes_avatar img{
+  max-width: 100%;
+  width: 60%;
+}
+}
+  
