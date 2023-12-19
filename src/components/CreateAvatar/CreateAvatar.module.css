@@ -7,14 +7,14 @@ canvas {
   cursor: pointer;
 }
 .title_create_avatar {
-  margin-top: -10em;
+  position: absolute;
   top: 0;
-  position: fixed;
-  
+  margin-left: 23%;
+  margin-top: 10%;
+ 
 }
 .title_create_avatar img {
-  width: 20em;
-
+width: 25em;
 }
 .img_avatar {
     position: fixed;
@@ -240,6 +240,16 @@ canvas {
 
 
 @media (max-width: 1800px) {
+  .title_create_avatar {
+    position: absolute;
+    top: 0;
+    margin-left: 15%;
+    margin-top: 10%;
+   
+  }
+  .title_create_avatar img {
+  width: 22em;
+  }
   .img_avatar img {
     width: 15em;
  max-width: 100%;
@@ -284,5 +294,31 @@ canvas {
 
 
 }
+.datas {
+  display: grid;
+  justify-content: center;
+  margin-top: 2em;
+  margin-left: 65%;
+  background-color: rgb(219, 219, 219);
+  width: 30%;
+  height: 10em;
+
+  box-shadow:0px 7px 15px #000 ;
+
+}
+
+.color {
+  display: flex;
+  justify-content: center;
+  margin-left: 65%;
+  background-color: rgb(219, 219, 219);
+  padding: 15px;
+  width: 30%;
+
+  box-shadow:0px 7px 15px #000 ;
+
+}
+
+
 }
   
