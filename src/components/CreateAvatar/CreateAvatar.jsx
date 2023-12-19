@@ -57,7 +57,7 @@ export default function CreateAvatar() {
   );
   const [selectedImageGlasses, setSelectedImageGlasses] = React.useState("");
   const [selectedImageCaps, setSelectedImageCaps] = React.useState("");
-  const [selectedImageEarrings, setSelectedImageRarrings] = React.useState("");
+  const [selectedImageEarrings, setSelectedImageErrings] = React.useState("");
 
   const [eyes, setEyes] = React.useState(false);
   const [faces, setFaces] = React.useState(true);
@@ -298,7 +298,7 @@ export default function CreateAvatar() {
   };
 
   const handleImageEarrings = (imageSrc) => {
-    setSelectedImageRarrings(imageSrc);
+    setSelectedImageErrings(imageSrc);
   };
 
   const handleDownload = () => {
@@ -494,7 +494,7 @@ export default function CreateAvatar() {
                     </div>
                   )}
                   {selectedImageEarrings && (
-                    <div className={styles.eae_avatar}>
+                    <div className={styles.eae_rarrings}>
                       <img
                         src={selectedImageEarrings}
                         alt="Avatar"
@@ -679,6 +679,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_01.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                     <div
@@ -690,8 +692,9 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ojos/OJOS_02.png")}
+                        src={require("../../image/Ojos/OJOS_02.png") }
                         alt=""
+                        className={styles.options_select}
                       />
                     </div>
                   </div>
@@ -708,6 +711,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_03.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
 
@@ -722,6 +727,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_04.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                   </div>
@@ -738,6 +745,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_05.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
 
@@ -752,6 +761,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_06.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                   </div>
@@ -768,6 +779,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_07.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
 
@@ -782,6 +795,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_08.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                   </div>
@@ -797,6 +812,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_09.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                     <div
@@ -810,6 +827,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_10.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                   </div>
@@ -825,6 +844,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_11.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                     <div
@@ -838,6 +859,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_12.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                   </div>
@@ -853,6 +876,8 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_13.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                     <div
@@ -866,9 +891,46 @@ export default function CreateAvatar() {
                       <img
                         src={require("../../image/Ojos/OJOS_14.png")}
                         alt=""
+                        className={styles.options_select}
+
                       />
                     </div>
                   </div>
+                  
+
+                  <div className={styles.box_datas}>
+                    <div
+                      className={styles.result_menu}
+                      onClick={() =>
+                        handleImageClick(
+                          require("../../image/Ojos/OJOS_01.png")
+                        )
+                      }
+                    >
+                      <img
+                        src={require("../../image/Ojos/OJOS_01.png")}
+                        alt=""
+                        className={styles.options_select}
+
+                      />
+                    </div>
+                    <div
+                      className={styles.result_menu}
+                      onClick={() =>
+                        handleImageClick(
+                          require("../../image/Ojos/OJOS_02.png")
+                        )
+                      }
+                    >
+                      <img
+                        src={require("../../image/Ojos/OJOS_02.png") }
+                        alt=""
+                        className={styles.options_select}
+                      />
+                    </div>
+                  </div>
+
+
                 </div>
               </div>
             )}
@@ -2940,9 +3002,11 @@ export default function CreateAvatar() {
                 </div>
               </div>
             )}
+            {eyes ? (
+
             <div className={styles.color}>
-              <div>
-                <img src={require("../../image/COLOR_BLANCO.png")} alt="" />
+              <div onClick={() => setSelectedImage(false)}>
+                <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
               </div>
               <div>
                 <img src={require("../../image/COLOR_AZUL.png")} alt="" />
@@ -2960,6 +3024,251 @@ export default function CreateAvatar() {
                 <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
               </div>
             </div>
+            ): null}
+
+{hair ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageHair(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{eyebrows ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageEyebrows(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{nose ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageNose(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{lips ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageLips(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{moustache ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageMoustache(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{ear ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageEar(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{glasses ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageGlasses(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{caps ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageCaps(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
+{earrings ? (
+
+<div className={styles.color}>
+  <div onClick={() => 
+    setSelectedImageErrings(false)
+    
+    }>
+    <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_AZUL.png")} alt="" />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_TURQUEZA.png")} alt="" />
+  </div>
+  <div>
+    <img
+      src={require("../../image/COLOR_VERDE_LIMON.png")}
+      alt=""
+    />
+  </div>
+  <div>
+    <img src={require("../../image/COLOR_VIOLETA.png")} alt="" />
+  </div>
+</div>
+): null}
+
           </div>
         </Box>
       </Modal>
