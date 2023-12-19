@@ -5,6 +5,13 @@ canvas {
 .btn_avatar{
   width: 7em;
   cursor: pointer;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+.title_avatar {
+  margin-top: -1em;
+  font-weight: 800;
 }
 .title_create_avatar {
   position: absolute;

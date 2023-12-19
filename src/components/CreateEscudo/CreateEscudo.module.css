@@ -1,4 +1,13 @@
-.escudo_img {
+
+
+.escudo_img{
     width: 7em;
     cursor: pointer;
-}
+    display: grid;
+    justify-content: center;
+    text-align: center;
+  }
+  .title_escudo {
+    margin-top: -1em;
+    font-weight: 800;
+  }

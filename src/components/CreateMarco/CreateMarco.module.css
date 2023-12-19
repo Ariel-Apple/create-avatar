@@ -1,3 +1,13 @@
-.marco_img img{
+
+
+.marco_img{
     width: 7em;
-}
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+  }
+  .title_marco {
+    margin-top: -1em;
+    font-weight: 800;
+  }

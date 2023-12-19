@@ -34,7 +34,7 @@ export default function CreateAvatar() {
     require("../../image/Rostro/ROSTRO_01.png")
   );
   const [selectedImageHair, setSelectedImageHair] = React.useState(
-    require("../../image/Cabello/CABELLO_01.png")
+    require("../../image/Cabello/CABELLO_09.png")
   );
   const [selectedImageEyebrows, setSelectedImageEyebrows] = React.useState(
     require("../../image/Cejas/Cejas10_1.png")
@@ -46,9 +46,7 @@ export default function CreateAvatar() {
     require("../../image/Boca/Boca0_1.png")
   );
 
-  const [selectedImageMoustache, setSelectedImageMoustache] = React.useState(
-    require("../../image/Bigotes/Bigotes1_1.png")
-  );
+  const [selectedImageMoustache, setSelectedImageMoustache] = React.useState("");
 
   const [selectedImageEar, setSelectedImageEar] = React.useState(
     require("../../image/Orejas/OREJAS_1.png")
@@ -408,6 +406,7 @@ export default function CreateAvatar() {
           div
           onClick={handleOpen}
         />
+        <div className={styles.title_avatar}>AVATAR</div>
       </div>
       <Modal
         open={open}

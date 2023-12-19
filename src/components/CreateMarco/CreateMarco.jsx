@@ -5,6 +5,8 @@ export default function CreateMarco() {
         <div>
             <div className={styles.marco_img}>
                 <img src={require('../../image/home/BOTON_VIÑETA.png')} alt="" />
+        <div className={styles.title_marco}>ESCUDO</div>
+           
             </div>
         </div>
     )
