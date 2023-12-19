@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("./image/home/FONDO.png");  
+  background: url("https://i.ibb.co/LR0WTqC/FONDO.webp");  
   background-repeat: no-repeat;
   background-size: cover; 
   
@@ -24,7 +24,7 @@ code {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: url("./image/home/FONDO.png");
+    background: url("https://i.ibb.co/LR0WTqC/FONDO.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
