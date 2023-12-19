@@ -1,5 +1,7 @@
-.createavatar_container {
+canvas {
+  z-index: 100; /* o cualquier valor que sea suficientemente alto */
 }
+
 .btn_avatar{
   width: 7em;
   cursor: pointer;
@@ -20,6 +22,7 @@
     left: 37%;
     transform: translateX(-50%);
   }
+ 
   
   .img_avatar img {
     width: 25em;
@@ -70,37 +73,171 @@
     justify-content: center;
     margin-top: 2em;
     margin-left: 65%;
-    background-color: white;
-    gap: 2px;
-    padding: 3px;
+    background-color: rgb(219, 219, 219);
     width: 30%;
-    box-shadow:0px 7px 15px #000 ;
+    height: 20em;
 
+    box-shadow:0px 7px 15px #000 ;
+ 
   }
+ 
 
   .box_datas {
     display: flex;
-    gap: 2px;
   }
-
+.result_menu img{
+  max-width: 100%;
+  margin-bottom: 2em;
+}
   .seconds_data{
+   
     overflow: scroll;
     overflow-x: hidden;
   
     
   }
+  .hair_avatar {
+    position: absolute;
+    margin-top: -133%;
+    max-width: 100%;
+    margin-left: 1%;
+    z-index: 3;
+
+  }
+  .hair_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 130%;
+
+  }
+
+
+  .eyebrows_avatar {
+    position: absolute;
+    margin-top: -135%;
+    max-width: 100%;
+    margin-left: 1%;
+    z-index: 3;
+
+  }
+  .eyebrows_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 130%;
+
+  }
+
+
+  .lips_avatar {
+    position: absolute;
+    margin-top: -132%;
+    max-width: 100%;
+    margin-left: 1%;
+    z-index: 3;
+  }
+  .lips_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 130%;
+
+  }
+
+  .moustache_avatar {
+    position: absolute;
+    margin-top: -121%;
+    max-width: 100%;
+    margin-left: 10%;
+    z-index: 4;
+
+  }
+  .moustache_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 90%;
+   height: 150%;
+
+
+  }
+
+  .eae_avatar {
+    position: absolute;
+    margin-top: -135%;
+    max-width: 100%;
+    margin-left: 1%;
+    z-index: 4;
+  }
+  .eae_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 150%;
+  }
+
+  
+  
+
+  .face_avatar {
+    position: absolute;
+    margin-top: -130%;
+    max-width: 100%;
+    margin-left: 1%;
+    z-index: 1;
+  }
+
+  .face_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 130%;
+
+  }
 
   .eyes_avatar {
     position: absolute;
-    margin-top: -100%;
-    margin-left: 25%;
+    margin-top: -135%;
     max-width: 100%;
-  
+    margin-left: 2%;
+    z-index: 4;
+
+    
   }
   .eyes_avatar img{
+    max-height: 100%;
     max-width: 100%;
-    width: 65%;
+    width: 160%;
+
   }
+
+  .caps_avatar {
+    position: absolute;
+    margin-top: -133%;
+    max-width: 100%;
+    margin-left: 1%;
+    z-index: 4;
+
+  }
+  .caps_avatar img{
+    max-height: 100%;
+    max-width: 100%;
+    width: 130%;
+
+  }
+  
+   .color {
+    display: flex;
+    justify-content: center;
+    margin-left: 65%;
+    background-color: rgb(219, 219, 219);
+    padding: 15px;
+    width: 30%;
+
+    box-shadow:0px 7px 15px #000 ;
+ 
+  }
+
+  .color img {
+    width: 30%;
+    cursor: pointer;
+  }
+
 
 @media (max-width: 1800px) {
   .img_avatar img {
@@ -127,23 +264,25 @@
  max-width: 100%;
 
 }
-.datas {
-height: 12em;
-max-width: 100%;
 
 
+
+.result_menu img{
+  margin-bottom: 2em;
 }
 
-.eyes_avatar {
-  position: absolute;
-  margin-top: -100%;
-  margin-left: 28%;
+.moustache_avatar {
   max-width: 100%;
+  margin-left: 10%;
 
 }
-.eyes_avatar img{
+.moustache_avatar img{
+  max-height: 100%;
   max-width: 100%;
-  width: 60%;
+  width: 90%;
+ height: 150%;
+
+
 }
 }
   
