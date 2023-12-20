@@ -1,11 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import backgroundImage from "../../image/FONDO_Mesa.png";
 import styles from "./CreateAvatar.module.css";
-import { StyleSharp } from "@mui/icons-material";
-import { useDropzone } from "react-dropzone";
+
 
 const style = {
   position: "absolute",
@@ -27,11 +25,11 @@ export default function CreateAvatar() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [selectedImage, setSelectedImage] = React.useState(
-    require("../../image/Ojos/OJOS_05.png")
-  );
   const [selectedImageFace, setSelectedImageFace] = React.useState(
     require("../../image/Rostro/ROSTRO_01.png")
+  );
+  const [selectedImage, setSelectedImage] = React.useState(
+    require("../../image/Ojos/OJOS_05.png")
   );
   const [selectedImageHair, setSelectedImageHair] = React.useState(
     require("../../image/Cabello/CABELLO_09.png")
@@ -53,11 +51,94 @@ export default function CreateAvatar() {
   );
 
   const [selectedImageBody, setSelectedImageBody] = React.useState(
-    require("../../image/Ropa/Ropa3_1.png")
+    require("../../image/Ropa/Ropa1_1.png")
   );
   const [selectedImageGlasses, setSelectedImageGlasses] = React.useState("");
   const [selectedImageCaps, setSelectedImageCaps] = React.useState("");
   const [selectedImageEarrings, setSelectedImageErrings] = React.useState("");
+
+ 
+
+  const handleDownload = () => {
+    // Verifica que todas las imágenes estén cargadas
+  
+      // Crea un elemento canvas para combinar las imágenes
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+  
+      // Carga las imágenes
+      const mainImage = new Image();
+      mainImage.src = selectedImageBody;
+  
+      const hairImage = new Image();
+      hairImage.src = selectedImageHair;
+  
+      const eyesImage = new Image();
+      eyesImage.src = selectedImage;
+  
+      const eyebrowsImage = new Image();
+      eyebrowsImage.src = selectedImageEyebrows;
+  
+      const noseImage = new Image();
+      noseImage.src = selectedImageNose;
+  
+      const lipsImage = new Image();
+      lipsImage.src = selectedImageLips;
+  
+      const moustacheImage = new Image();
+      moustacheImage.src = selectedImageMoustache;
+  
+      const earImage = new Image();
+      earImage.src = selectedImageEar;
+  
+      const faceImage = new Image();
+      faceImage.src = selectedImageFace;
+  
+      // Promesa para cargar todas las imágenes
+    
+          // Establece el tamaño del canvas según la imagen principal
+          canvas.width = mainImage.width;
+          canvas.height = mainImage.height;
+  
+          // Dibuja la imagen principal
+          context.drawImage(mainImage, 0, 0);
+  
+          // Dibuja cada componente en las posiciones deseadas
+          context.drawImage(hairImage, 0, 0);
+          context.drawImage(eyesImage, 0, 0);
+          context.drawImage(eyebrowsImage, 0, -50);  // Ajusta la posición de las cejas hacia arriba
+          context.drawImage(noseImage, 0, -30);      // Ajusta la posición de la nariz hacia arriba
+          context.drawImage(lipsImage, 0, 20);       // Ajusta la posición de la boca hacia abajo
+          context.drawImage(moustacheImage, 0, 0);
+          context.drawImage(earImage, 0, 0);
+          context.drawImage(faceImage, 0, 0);
+          
+  
+          // Crea un enlace temporal para descargar la imagen combinada
+          const link = document.createElement("a");
+          link.href = canvas.toDataURL(); // Convierte el contenido del canvas a una URL de datos
+          link.download = "mi_avatar.png"; // Puedes personalizar el nombre del archivo
+          link.click();
+          link.remove();
+  
+  };
+  
+  // Función auxiliar para cargar imágenes y devolver una promesa
+ 
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
 
   const [eyes, setEyes] = React.useState(false);
   const [faces, setFaces] = React.useState(true);
@@ -301,99 +382,7 @@ export default function CreateAvatar() {
     setSelectedImageErrings(imageSrc);
   };
 
-  const handleDownload = () => {
-    // Verifica que todas las imágenes estén cargadas
-    if (
-      selectedImageBody &&
-      selectedImage &&
-      selectedImageFace &&
-      selectedImageHair &&
-      selectedImageEyebrows &&
-      selectedImageNose &&
-      selectedImageLips &&
-      selectedImageMoustache &&
-      selectedImageEar
-    ) {
-      // Crea un elemento canvas para combinar las imágenes
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
-  
-      // Carga las imágenes
-      const mainImage = new Image();
-      mainImage.src = selectedImageBody;
-  
-      const hairImage = new Image();
-      hairImage.src = selectedImageHair;
-  
-      const eyesImage = new Image();
-      eyesImage.src = selectedImage;
-  
-      const eyebrowsImage = new Image();
-      eyebrowsImage.src = selectedImageEyebrows;
-  
-      const noseImage = new Image();
-      noseImage.src = selectedImageNose;
-  
-      const lipsImage = new Image();
-      lipsImage.src = selectedImageLips;
-  
-      const moustacheImage = new Image();
-      moustacheImage.src = selectedImageMoustache;
-  
-      const earImage = new Image();
-      earImage.src = selectedImageEar;
-  
-      const faceImage = new Image();
-      faceImage.src = selectedImageFace;
-  
-      // Promesa para cargar todas las imágenes
-      Promise.all([
-        loadImage(mainImage),
-        loadImage(hairImage),
-        loadImage(eyesImage),
-        loadImage(eyebrowsImage),
-        loadImage(noseImage),
-        loadImage(lipsImage),
-        loadImage(moustacheImage),
-        loadImage(earImage),
-        loadImage(faceImage),
-      ])
-        .then(() => {
-          // Establece el tamaño del canvas según la imagen principal
-          canvas.width = mainImage.width;
-          canvas.height = mainImage.height;
-  
-          // Dibuja la imagen principal
-          context.drawImage(mainImage, 0, 0);
-  
-          // Dibuja cada componente en las posiciones deseadas
-          context.drawImage(hairImage, 0, 0);
-          context.drawImage(eyesImage, 0, 0);
-          context.drawImage(eyebrowsImage, 0, 0);
-          context.drawImage(noseImage, 0, 0);
-          context.drawImage(lipsImage, 0, 0);
-          context.drawImage(moustacheImage, 0, 0);
-          context.drawImage(earImage, 0, 0);
-          context.drawImage(faceImage, 0, 0);
-  
-          // Crea un enlace temporal para descargar la imagen combinada
-          const link = document.createElement("a");
-          link.href = canvas.toDataURL(); // Convierte el contenido del canvas a una URL de datos
-          link.download = "mi_avatar.png"; // Puedes personalizar el nombre del archivo
-          link.click();
-          link.remove();
-        })
-        .catch((error) => console.error("Error al cargar las imágenes", error));
-    }
-  };
-  
-  // Función auxiliar para cargar imágenes y devolver una promesa
-  const loadImage = (image) => {
-    return new Promise((resolve, reject) => {
-      image.onload = () => resolve(image);
-      image.onerror = (error) => reject(`Error al cargar la imagen: ${error}`);
-    });
-  };
+ 
   
   
 
@@ -2269,7 +2258,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa1_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa1_1.png")}
                         alt="not found"
                       />
                     </div>
@@ -2280,7 +2269,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa2_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa2_1.png")}
                         alt=""
                       />
                     </div>
@@ -2294,7 +2283,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa3_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa3_1.png")}
                         alt=""
                       />
                     </div>
@@ -2306,7 +2295,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa4_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa4_1.png")}
                         alt=""
                       />
                     </div>
@@ -2319,7 +2308,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa5_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa5_1.png")}
                         alt=""
                       />
                     </div>
@@ -2331,7 +2320,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa6_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa6_1.png")}
                         alt=""
                       />
                     </div>
@@ -2345,7 +2334,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa7_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa7_1.png")}
                         alt=""
                       />
                     </div>
@@ -2356,7 +2345,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa8_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa8_1.png")}
                         alt=""
                       />
                     </div>
@@ -2369,7 +2358,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa9_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa9_1.png")}
                         alt=""
                       />
                     </div>
@@ -2383,7 +2372,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa10_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa10_1.png")}
                         alt=""
                       />
                     </div>
@@ -2398,7 +2387,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa11_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa11_1.png")}
                         alt=""
                       />
                     </div>
@@ -2412,7 +2401,7 @@ export default function CreateAvatar() {
                       }
                     >
                       <img
-                        src={require("../../image/Ropa/Ropa12_1.png")}
+                        src={require("../../image/opcion_ropa/Ropa12_1.png")}
                         alt=""
                       />
                     </div>

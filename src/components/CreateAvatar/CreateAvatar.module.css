@@ -218,13 +218,15 @@ width: 30em;
     z-index: 2;
   }
 
+  
+
   .face_avatar img{
     max-height: 100%;
     max-width: 100%;
     width: 130%;
 
   }
-
+ 
   .eyes_avatar {
     position: absolute;
     margin-top: -135%;
