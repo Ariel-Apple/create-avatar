@@ -51,7 +51,7 @@ export default function CreateAvatar() {
   );
 
   const [selectedImageBody, setSelectedImageBody] = React.useState(
-    require("../../image/Ropa/Ropa1_1.png")
+    require("../../image/AVATAR_BASICO.png")
   );
   const [selectedImageGlasses, setSelectedImageGlasses] = React.useState("");
   const [selectedImageCaps, setSelectedImageCaps] = React.useState("");
@@ -93,25 +93,24 @@ export default function CreateAvatar() {
   
       const faceImage = new Image();
       faceImage.src = selectedImageFace;
-  
+      const EarringsImage = new Image();
+      EarringsImage.src = selectedImageEarrings;
+      
       // Promesa para cargar todas las imágenes
     
           // Establece el tamaño del canvas según la imagen principal
-          canvas.width = mainImage.width;
-          canvas.height = mainImage.height;
-  
+          canvas.width =  mainImage.width;
+          canvas.height =  mainImage.height;
           // Dibuja la imagen principal
-          context.drawImage(mainImage, 0, 0);
+          context.drawImage(mainImage, 0, 0, mainImage.width, mainImage.height );
   
           // Dibuja cada componente en las posiciones deseadas
-          context.drawImage(hairImage, 0, 0);
-          context.drawImage(eyesImage, 0, 0);
-          context.drawImage(eyebrowsImage, 0, -50);  // Ajusta la posición de las cejas hacia arriba
-          context.drawImage(noseImage, 0, -30);      // Ajusta la posición de la nariz hacia arriba
-          context.drawImage(lipsImage, 0, 20);       // Ajusta la posición de la boca hacia abajo
-          context.drawImage(moustacheImage, 0, 0);
-          context.drawImage(earImage, 0, 0);
-          context.drawImage(faceImage, 0, 0);
+          context.drawImage(noseImage, -100, -800, 2600, 2400);      // Ajusta la posición de la nariz hacia arriba
+          context.drawImage(lipsImage, -100, -400, 2600, 2400);       // Ajusta la posición de la boca hacia abajo
+          context.drawImage(EarringsImage, -100, -500, 2600, 2400);  // Ajusta la posición de las cejas hacia arriba
+          context.drawImage(moustacheImage, -100, -500, 2600, 2400);
+          context.drawImage(eyebrowsImage, -100, -1250, 2600, 2400);  // Ajusta la posición de las cejas hacia arriba
+          context.drawImage(eyesImage, -300, -450, eyesImage.width, eyesImage.height);
           
   
           // Crea un enlace temporal para descargar la imagen combinada
@@ -463,7 +462,7 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
-                  {selectedImageHair && (
+        {/*           {selectedImageHair && (
                     <div className={styles.hair_avatar}>
                       <img
                         src={selectedImageHair}
@@ -472,8 +471,8 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
-
-                  {selectedImageEar && (
+ */}
+      {/*             {selectedImageEar && (
                     <div className={styles.eae_avatar}>
                       <img
                         src={selectedImageEar}
@@ -481,7 +480,7 @@ export default function CreateAvatar() {
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
-                  )}
+                  )} */}
                   {selectedImageEarrings && (
                     <div className={styles.eae_rarrings}>
                       <img
@@ -532,7 +531,7 @@ export default function CreateAvatar() {
                     </div>
                   )}
 
-                  {selectedImageFace && (
+            {/*       {selectedImageFace && (
                     <div className={styles.face_avatar}>
                       <img
                         src={selectedImageFace}
@@ -540,7 +539,7 @@ export default function CreateAvatar() {
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
-                  )}
+                  )} */}
                   {selectedImage && (
                     <div className={styles.eyes_avatar}>
                       <img

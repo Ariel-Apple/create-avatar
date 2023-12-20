@@ -32,7 +32,7 @@ width: 25em;
  
   
   .img_avatar img {
-    width: 25em;
+    width: 20em;
   }
   
   .btn_exit img {
@@ -118,6 +118,7 @@ width: 30em;
   
     
   }
+
   .hair_avatar {
     position: absolute;
     margin-top: -133%;
@@ -136,7 +137,7 @@ width: 30em;
 
   .eyebrows_avatar {
     position: absolute;
-    margin-top: -135%;
+    margin-top: -146%;
     max-width: 100%;
     margin-left: 1%;
     z-index: 3;
@@ -152,7 +153,7 @@ width: 30em;
 
   .lips_avatar {
     position: absolute;
-    margin-top: -132%;
+    margin-top: -142%;
     max-width: 100%;
     margin-left: 1%;
     z-index: 3;
@@ -166,7 +167,7 @@ width: 30em;
 
   .moustache_avatar {
     position: absolute;
-    margin-top: -121%;
+    margin-top: -130%;
     max-width: 100%;
     margin-left: 10%;
     z-index: 4;
@@ -196,9 +197,9 @@ width: 30em;
 
   .eae_rarrings {
     position: absolute;
-    margin-top: -135%;
+    margin-top: -143%;
     max-width: 100%;
-    margin-left: 1%;
+    margin-left: 10%;
     z-index: 5;
   }
   .eae_rarrings img{
@@ -229,7 +230,7 @@ width: 30em;
  
   .eyes_avatar {
     position: absolute;
-    margin-top: -135%;
+    margin-top: -145%;
     max-width: 100%;
     margin-left: 2%;
     z-index: 4;
