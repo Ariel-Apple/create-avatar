@@ -62,103 +62,80 @@ export default function CreateAvatar() {
   const handleDownload = async () => {
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
-  
+
     // Función para cargar una imagen y devolver una promesa
     const loadImage = (src) => {
-      return new Promise((resolve, reject) => {
-        const image = new Image();
-        image.onload = () => resolve(image);
-        image.onerror = reject;
-        image.src = src;
-      });
+        return new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = () => resolve(image);
+            image.onerror = () => resolve(null); // Resuelve con null en caso de error
+            image.src = src;
+        });
     };
-  
+
     try {
-      // Cargar todas las imágenes
-      const [
-        faceImage,
-        eyesImage,
-        hairImage,
-        eyebrowsImage,
-        noseImage,
-        lipsImage,
-        moustacheImage,
-        earImage,
-        bodyImage,
-        glassesImage,
-        capsImage,
-        earringsImage,
-      ] = await Promise.all([
-        loadImage(selectedImageFace),
-        loadImage(selectedImageEyes),
-        loadImage(selectedImageHair),
-        loadImage(selectedImageEyebrows),
-        loadImage(selectedImageNose),
-        loadImage(selectedImageLips),
-        loadImage(selectedImageMoustache),
-        loadImage(selectedImageEar),
-        loadImage(selectedImageBody),
-        loadImage(selectedImageGlasses),
-        loadImage(selectedImageCaps),
-        loadImage(selectedImageEarrings),
-      ]);
-  
-      // Establecer el tamaño del canvas según la imagen principal (usaremos la más grande)
-      canvas.width = Math.max(faceImage.width, bodyImage.width);
-      canvas.height = Math.max(faceImage.height, bodyImage.height);
-  
-      const aspectRatio = bodyImage.width / bodyImage.height;
-      const newWidth = 3000;  // ajusta este valor según tus necesidades
-      const newHeight = newWidth / aspectRatio;
-      
+        // Cargar todas las imágenes, permitiendo que algunas puedan ser null
+        const [
+            faceImage,
+            eyesImage,
+            hairImage,
+            eyebrowsImage,
+            noseImage,
+            lipsImage,
+            moustacheImage,
+            earImage,
+            bodyImage,
+            glassesImage,
+            capsImage,
+            earringsImage,
+        ] = await Promise.all([
+            loadImage(selectedImageFace),
+            loadImage(selectedImageEyes),
+            loadImage(selectedImageHair),
+            loadImage(selectedImageEyebrows),
+            loadImage(selectedImageNose),
+            loadImage(selectedImageLips),
+            loadImage(selectedImageMoustache),
+            loadImage(selectedImageEar),
+            loadImage(selectedImageBody),
+            loadImage(selectedImageGlasses),
+            loadImage(selectedImageCaps),
+            loadImage(selectedImageEarrings),
+        ]);
 
-      const newWidtheyebrows = 2700;  // ajusta este valor según tus necesidades
-      const newHeightebrows = newWidtheyebrows / aspectRatio;
+        // Establecer el tamaño del canvas según la imagen principal (usaremos la más grande)
+        const maxWidth = Math.max(...[faceImage, bodyImage].filter(img => img !== null).map(img => img.width));
+        const maxHeight = Math.max(...[faceImage, bodyImage].filter(img => img !== null).map(img => img.height));
+
+        canvas.width = maxWidth;
+        canvas.height = maxHeight;
 
 
-      const newWidthNose = 1500;  // ajusta este valor según tus necesidades
-      const newHeighteNose= newWidthNose / aspectRatio;
+        
+       context.drawImage(earImage, 0, 0);
+        faceImage && context.drawImage(faceImage, 0, 0);
+        bodyImage && context.drawImage(bodyImage, 0, 0, maxWidth, maxHeight);
+        noseImage && context.drawImage(noseImage, 750, 500, 1500, 1500);
+        earringsImage && context.drawImage(earringsImage, 0, -850, 3000, 3000);
+        eyebrowsImage && context.drawImage(eyebrowsImage, 125, -1100, 2700, 2700);
+        hairImage && context.drawImage(hairImage, 0, 0);
+        lipsImage && context.drawImage(lipsImage, 620, 550, 1800, 1800);
+        eyesImage && context.drawImage(eyesImage, 0, 0);
+        glassesImage && context.drawImage(glassesImage, 300, -450, 2400, 2400);
+        capsImage && context.drawImage(capsImage, 0, 0);
+        moustacheImage && context.drawImage(moustacheImage, 500, 300, 2000, 2000); 
 
-
-      const newWidthLips= 1800;  // ajusta este valor según tus necesidades
-      const newHeighteLips= newWidthLips / aspectRatio;
-
-    const newWidthGlasses= 2400;  // ajusta este valor según tus necesidades
-      const newHeighteGlasses= newWidthGlasses / aspectRatio;
-
-
-      
-    const newWidthEarrings= 3000;  // ajusta este valor según tus necesidades
-    const newHeighteEarrings= newWidthEarrings / aspectRatio;
-
-
-    const newWidthMoustache= 2000;  // ajusta este valor según tus necesidades
-    const newHeighteMoustache= newWidthMoustache / aspectRatio;
-
-
-      context.drawImage(earImage, 0, 0,);
-      context.drawImage(faceImage, 0, 0);
-      context.drawImage(bodyImage, 0, 0, newWidth, newHeight);
-      context.drawImage(noseImage, 750, 0, newWidthNose, newHeighteNose );
-      context.drawImage(earringsImage, 0, -1400, newWidthEarrings, newHeighteEarrings);
-      context.drawImage(eyebrowsImage, 125, -1900, newWidtheyebrows, newHeightebrows);
-      context.drawImage(hairImage, 0, 0);
-      context.drawImage(glassesImage, 300, -1100, newWidthGlasses, newHeighteGlasses);
-      context.drawImage(capsImage, 0, 0);
-      context.drawImage(lipsImage, 620, 0, newWidthLips,newHeighteLips );
-      context.drawImage(eyesImage, 0, 0);
-      context.drawImage(moustacheImage, 500, -150, newWidthMoustache, newHeighteMoustache);
-  
-      // Crear un enlace temporal para descargar la imagen combinada
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png");
-      link.download = "mi_avatar.png"; // Puedes personalizar el nombre del archivo
-      link.click();
-      link.remove();
+        // Crear un enlace temporal para descargar la imagen combinada
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = "mi_avatar.png"; // Puedes personalizar el nombre del archivo
+        link.click();
+        link.remove();
     } catch (error) {
-      console.error("Error al cargar las imágenes:", error);
+        console.error("Error al cargar las imágenes:", error);
     }
-  };
+};
+
   
   
 

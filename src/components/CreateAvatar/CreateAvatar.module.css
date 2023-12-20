@@ -33,10 +33,13 @@ width: 25em;
 }
 
 
-
+.avatarCanvas {
+  background-color: red; 
+}
   .body_avatar  {
     width: 25em;
     z-index: 1;
+    
 
   }
   .face_avatar {
