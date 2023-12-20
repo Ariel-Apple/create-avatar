@@ -28,7 +28,7 @@ export default function CreateAvatar() {
   const [selectedImageFace, setSelectedImageFace] = React.useState(
     require("../../image/Rostro/ROSTRO_01.png")
   );
-  const [selectedImage, setSelectedImage] = React.useState(
+  const [selectedImageEyes, setSelectedImageEyes] = React.useState(
     require("../../image/Ojos/OJOS_05.png")
   );
   const [selectedImageHair, setSelectedImageHair] = React.useState(
@@ -51,7 +51,7 @@ export default function CreateAvatar() {
   );
 
   const [selectedImageBody, setSelectedImageBody] = React.useState(
-    require("../../image/AVATAR_BASICO.png")
+    require("../../image/Ropa/Ropa10_1.png")
   );
   const [selectedImageGlasses, setSelectedImageGlasses] = React.useState("");
   const [selectedImageCaps, setSelectedImageCaps] = React.useState("");
@@ -59,80 +59,108 @@ export default function CreateAvatar() {
 
  
 
-  const handleDownload = () => {
-    // Verifica que todas las imágenes estén cargadas
+  const handleDownload = async () => {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
   
-      // Crea un elemento canvas para combinar las imágenes
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
+    // Función para cargar una imagen y devolver una promesa
+    const loadImage = (src) => {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = reject;
+        image.src = src;
+      });
+    };
   
-      // Carga las imágenes
-      const mainImage = new Image();
-      mainImage.src = selectedImageBody;
+    try {
+      // Cargar todas las imágenes
+      const [
+        faceImage,
+        eyesImage,
+        hairImage,
+        eyebrowsImage,
+        noseImage,
+        lipsImage,
+        moustacheImage,
+        earImage,
+        bodyImage,
+        glassesImage,
+        capsImage,
+        earringsImage,
+      ] = await Promise.all([
+        loadImage(selectedImageFace),
+        loadImage(selectedImageEyes),
+        loadImage(selectedImageHair),
+        loadImage(selectedImageEyebrows),
+        loadImage(selectedImageNose),
+        loadImage(selectedImageLips),
+        loadImage(selectedImageMoustache),
+        loadImage(selectedImageEar),
+        loadImage(selectedImageBody),
+        loadImage(selectedImageGlasses),
+        loadImage(selectedImageCaps),
+        loadImage(selectedImageEarrings),
+      ]);
   
-      const hairImage = new Image();
-      hairImage.src = selectedImageHair;
+      // Establecer el tamaño del canvas según la imagen principal (usaremos la más grande)
+      canvas.width = Math.max(faceImage.width, bodyImage.width);
+      canvas.height = Math.max(faceImage.height, bodyImage.height);
   
-      const eyesImage = new Image();
-      eyesImage.src = selectedImage;
-  
-      const eyebrowsImage = new Image();
-      eyebrowsImage.src = selectedImageEyebrows;
-  
-      const noseImage = new Image();
-      noseImage.src = selectedImageNose;
-  
-      const lipsImage = new Image();
-      lipsImage.src = selectedImageLips;
-  
-      const moustacheImage = new Image();
-      moustacheImage.src = selectedImageMoustache;
-  
-      const earImage = new Image();
-      earImage.src = selectedImageEar;
-  
-      const faceImage = new Image();
-      faceImage.src = selectedImageFace;
-      const EarringsImage = new Image();
-      EarringsImage.src = selectedImageEarrings;
+      const aspectRatio = bodyImage.width / bodyImage.height;
+      const newWidth = 3000;  // ajusta este valor según tus necesidades
+      const newHeight = newWidth / aspectRatio;
       
-      // Promesa para cargar todas las imágenes
-    
-          // Establece el tamaño del canvas según la imagen principal
-          canvas.width =  mainImage.width;
-          canvas.height =  mainImage.height;
-          // Dibuja la imagen principal
-          context.drawImage(mainImage, 0, 0, mainImage.width, mainImage.height );
+
+      const newWidtheyebrows = 2700;  // ajusta este valor según tus necesidades
+      const newHeightebrows = newWidtheyebrows / aspectRatio;
+
+
+      const newWidthNose = 1500;  // ajusta este valor según tus necesidades
+      const newHeighteNose= newWidthNose / aspectRatio;
+
+
+      const newWidthLips= 1800;  // ajusta este valor según tus necesidades
+      const newHeighteLips= newWidthLips / aspectRatio;
+
+    const newWidthGlasses= 2400;  // ajusta este valor según tus necesidades
+      const newHeighteGlasses= newWidthGlasses / aspectRatio;
+
+
+      
+    const newWidthEarrings= 3000;  // ajusta este valor según tus necesidades
+    const newHeighteEarrings= newWidthEarrings / aspectRatio;
+
+
+    const newWidthMoustache= 2000;  // ajusta este valor según tus necesidades
+    const newHeighteMoustache= newWidthMoustache / aspectRatio;
+
+
+      context.drawImage(earImage, 0, 0,);
+      context.drawImage(faceImage, 0, 0);
+      context.drawImage(bodyImage, 0, 0, newWidth, newHeight);
+      context.drawImage(noseImage, 750, 0, newWidthNose, newHeighteNose );
+      context.drawImage(earringsImage, 0, -1400, newWidthEarrings, newHeighteEarrings);
+      context.drawImage(eyebrowsImage, 125, -1900, newWidtheyebrows, newHeightebrows);
+      context.drawImage(hairImage, 0, 0);
+      context.drawImage(glassesImage, 300, -1100, newWidthGlasses, newHeighteGlasses);
+      context.drawImage(capsImage, 0, 0);
+      context.drawImage(lipsImage, 620, 0, newWidthLips,newHeighteLips );
+      context.drawImage(eyesImage, 0, 0);
+      context.drawImage(moustacheImage, 500, -150, newWidthMoustache, newHeighteMoustache);
   
-          // Dibuja cada componente en las posiciones deseadas
-          context.drawImage(noseImage, -100, -800, 2600, 2400);      // Ajusta la posición de la nariz hacia arriba
-          context.drawImage(lipsImage, -100, -400, 2600, 2400);       // Ajusta la posición de la boca hacia abajo
-          context.drawImage(EarringsImage, -100, -500, 2600, 2400);  // Ajusta la posición de las cejas hacia arriba
-          context.drawImage(moustacheImage, -100, -500, 2600, 2400);
-          context.drawImage(eyebrowsImage, -100, -1250, 2600, 2400);  // Ajusta la posición de las cejas hacia arriba
-          context.drawImage(eyesImage, -300, -450, eyesImage.width, eyesImage.height);
-          
-  
-          // Crea un enlace temporal para descargar la imagen combinada
-          const link = document.createElement("a");
-          link.href = canvas.toDataURL(); // Convierte el contenido del canvas a una URL de datos
-          link.download = "mi_avatar.png"; // Puedes personalizar el nombre del archivo
-          link.click();
-          link.remove();
-  
+      // Crear un enlace temporal para descargar la imagen combinada
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "mi_avatar.png"; // Puedes personalizar el nombre del archivo
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.error("Error al cargar las imágenes:", error);
+    }
   };
   
-  // Función auxiliar para cargar imágenes y devolver una promesa
- 
   
-  
-  
-  
-  
-
-
-
-
 
 
 
@@ -340,7 +368,7 @@ export default function CreateAvatar() {
   };
 
   const handleImageClick = (imageSrc) => {
-    setSelectedImage(imageSrc);
+    setSelectedImageEyes(imageSrc);
   };
   const handleImageFace = (imageSrc) => {
     setSelectedImageFace(imageSrc);
@@ -442,17 +470,8 @@ export default function CreateAvatar() {
                   />
                 </div>
 
-                <div className={styles.img_avatar}>
-                  {selectedImageBody && (
-                    <div className={styles.body_avatar}>
-                      <img
-                        src={selectedImageBody}
-                        alt="Avatar"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-                  )}
-
+                <div>
+                  <div className={styles.body_face}>
                   {selectedImageCaps && (
                     <div className={styles.caps_avatar}>
                       <img
@@ -462,7 +481,8 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
-        {/*           {selectedImageHair && (
+          
+                  {selectedImageHair && (
                     <div className={styles.hair_avatar}>
                       <img
                         src={selectedImageHair}
@@ -471,27 +491,16 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
- */}
-      {/*             {selectedImageEar && (
-                    <div className={styles.eae_avatar}>
+                {selectedImageFace && (
+                  <div className={styles.face_avatar}>
                       <img
-                        src={selectedImageEar}
+                        src={selectedImageFace}
                         alt="Avatar"
                         style={{ maxWidth: "100%" }}
                       />
                     </div>
-                  )} */}
-                  {selectedImageEarrings && (
-                    <div className={styles.eae_rarrings}>
-                      <img
-                        src={selectedImageEarrings}
-                        alt="Avatar"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-                  )}
-
-                  {selectedImageEyebrows && (
+                  )} 
+                     {selectedImageEyebrows && (
                     <div className={styles.eyebrows_avatar}>
                       <img
                         src={selectedImageEyebrows}
@@ -500,9 +509,46 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
-
+                         {selectedImageEyes && (
+                    <div className={styles.eyes_avatar}>
+                      <img
+                        src={selectedImageEyes}
+                        alt="Avatar"
+                        style={{ maxWidth: "100%" }}
+                      />
+                    </div>
+                  )}
+   
+   {selectedImageGlasses && (
+                    <div className={styles.galsees_avatar}>
+                      <img
+                        src={selectedImageGlasses}
+                        alt="Avatar"
+                        style={{ maxWidth: "100%" }}
+                      />
+                    </div>
+                  )}
+                     {selectedImageEar && (
+                    <div className={styles.eae_avatar}>
+                      <img
+                        src={selectedImageEar}
+                        alt="Avatar"
+                        style={{ maxWidth: "100%" }}
+                      />
+                    </div>
+                  )} 
+                       {selectedImageEarrings && (
+                    <div className={styles.eaerarrings_avatar}>
+                      <img
+                        src={selectedImageEarrings}
+                        alt="Avatar"
+                        style={{ maxWidth: "100%" }}
+                      />
+                    </div>
+                  )}
+                  
                   {selectedImageNose && (
-                    <div className={styles.eyebrows_avatar}>
+                    <div className={styles.nose_avatar}>
                       <img
                         src={selectedImageNose}
                         alt="Avatar"
@@ -510,8 +556,7 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
-
-                  {selectedImageMoustache && (
+                            {selectedImageMoustache && (
                     <div className={styles.moustache_avatar}>
                       <img
                         src={selectedImageMoustache}
@@ -520,8 +565,7 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
-
-                  {selectedImageLips && (
+                      {selectedImageLips && (
                     <div className={styles.lips_avatar}>
                       <img
                         src={selectedImageLips}
@@ -530,34 +574,30 @@ export default function CreateAvatar() {
                       />
                     </div>
                   )}
+                  {selectedImageBody && (
+                    <div className={styles.body_avatar}>
+                      <img
+                        src={selectedImageBody}
+                        alt="Avatar"
+                        style={{ maxWidth: "100%" }}
+                        />
+                    </div>
+                  )}
+                  </div>
 
-            {/*       {selectedImageFace && (
-                    <div className={styles.face_avatar}>
-                      <img
-                        src={selectedImageFace}
-                        alt="Avatar"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-                  )} */}
-                  {selectedImage && (
-                    <div className={styles.eyes_avatar}>
-                      <img
-                        src={selectedImage}
-                        alt="Avatar"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-                  )}
-                  {selectedImageGlasses && (
-                    <div className={styles.eyes_avatar}>
-                      <img
-                        src={selectedImageGlasses}
-                        alt="Avatar"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-                  )}
+          
+ 
+           
+             
+
+               
+
+
+
+              
+
+              
+        
                 </div>
               </div>
             </div>
@@ -2993,7 +3033,7 @@ export default function CreateAvatar() {
             {eyes ? (
 
             <div className={styles.color}>
-              <div onClick={() => setSelectedImage(false)}>
+              <div onClick={() => setSelectedImageEyes(false)}>
                 <img src={require("../../image/Eliminar.png")} alt="" className={styles.option_delete} />
               </div>
               <div>
