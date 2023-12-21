@@ -239,7 +239,6 @@ export default function CreateMarco() {
               </div>
               <div>
  
-      {/* Resto del código... */}
       <CanvasMarco ref={canvasRef} />
     </div>
               <div className={styles.barra_tools}>

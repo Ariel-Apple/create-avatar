@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { fabric } from 'fabric';
-
+import { useMediaQuery } from '@mui/material';
 const CanvasMarco = () => {
   const canvasRef = useRef(null);
-  const canvasWidth = 800;
-  const canvasHeight = 400;
+  const canvasWidth = useMediaQuery('(max-width:1440px)') ? 640 : 800;
+  const canvasHeight = useMediaQuery('(max-width:1440px)') ? 300 : 400;
   let zIndexCounter = 1;
   let currentImage = null; // Referencia a la imagen actualmente editable
 
