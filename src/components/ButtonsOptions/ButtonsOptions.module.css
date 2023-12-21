@@ -3,3 +3,12 @@
     gap: 4em;
 }
   
+@media (max-width: 768px) {
+    .buttons_optiones {
+        display: flex;
+        margin: 60% auto;
+    gap: 1.5em;
+
+     }
+        
+}

@@ -27,7 +27,7 @@ export default function Navbar() {
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto "
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src={require('././../../../image/home/LOGO.png')}
                 alt=""
               />
             </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
                 <span className="sr-only">Your Company</span>
                 <img
                   className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  src={require('../../../image/home/LOGO_mobile.png')}
                   alt=""
                 />
               </a>

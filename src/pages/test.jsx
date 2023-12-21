@@ -1,40 +1,69 @@
-import React, { useState } from 'react';
-import styles from './test.module.css'; // Asegúrate de tener tu archivo de estilos
+import React, { useRef, useEffect } from 'react';
+import { fabric } from 'fabric';
 
-const TuComponente = () => {
-  const [selectedColor, setSelectedColor] = useState('#ff0000'); // Color inicial
-  const [selectedImageEarrings, setSelectedImageRarrings] = React.useState("");
+const FabricCanvas = () => {
+  const canvasRef = useRef(null);
+  const canvasWidth = 800;
+  const canvasHeight = 400;
+  let zIndexCounter = 1;
 
-  const cambiarColor = (nuevoColor) => {
-    setSelectedColor(nuevoColor);
-  };
+  useEffect(() => {
+    const canvas = new fabric.Canvas(canvasRef.current, {
+      width: canvasWidth,
+      height: canvasHeight,
+      backgroundColor: '#f0f0f0',
+    });
+
+    const addImage = (img) => {
+      const scale = canvasWidth / img.width;
+
+      const fabricImage = new fabric.Image(img, {
+        left: 0,
+        top: 0,
+        scaleX: scale,
+        scaleY: scale,
+        selectable: true,
+        hasControls: true,
+        zIndex: zIndexCounter++,
+      });
+
+      // Agregar la nueva imagen en la parte superior del lienzo
+      canvas.add(fabricImage);
+      canvas.bringToFront(fabricImage);
+
+      canvas.renderAll();
+    };
+
+    canvas.wrapperEl.addEventListener('drop', (event) => {
+      event.preventDefault();
+
+      const file = event.dataTransfer.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.src = e.target.result;
+          img.onload = () => {
+            addImage(img);
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Permitir la interacción y manipulación de las imágenes
+    canvas.selection = true;
+
+    return () => {
+      canvas.dispose();
+    };
+  }, []);
 
   return (
     <div>
-      <div className={styles.hair_avatar} style={{ color: selectedColor }}>
-        <svg
-          xmlns=""
-          viewBox="0 0 24 24"
-          width="100"
-          height="100"
-        >
-          {/* Aquí incluye el contenido de tu imagen SVG */}
-          
-          <path
-            fill="currentColor"
-            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-          />
-        </svg>
-      </div>
-
-      <div>
-        <button onClick={() => cambiarColor('#ff0000')}>Rojo</button>
-        <button onClick={() => cambiarColor('#00ff00')}>Verde</button>
-        <button onClick={() => cambiarColor('#0000ff')}>Azul</button>
-        {/* Agrega más botones según sea necesario */}
-      </div>
+      <canvas ref={canvasRef}></canvas>
     </div>
   );
 };
 
-export default TuComponente;
+export default FabricCanvas;

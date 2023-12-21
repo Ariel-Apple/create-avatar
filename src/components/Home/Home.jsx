@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <div>
-        <div className={styles.center_img}>
+      <div className={styles.center_img}>
+        <div className={styles.center_rayos} >
             <img src={require('../../image/home/RAYOS.png')} alt="" />
 
           </div>

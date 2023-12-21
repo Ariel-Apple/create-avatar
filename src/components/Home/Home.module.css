@@ -4,3 +4,13 @@
     background-size: cover; 
 }
 
+@media (max-width: 768px) {
+    
+    .center_rayos {
+        margin: 0 auto;
+     
+        display: flex;
+        align-items: center;
+    }
+}
+
