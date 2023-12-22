@@ -219,7 +219,7 @@ export default function CreateMarco() {
                 <img src={require("../../image/Crea_tu_viñeta.png")} alt="" />
               </div>
   <div >
-              <canvas ref={canvasRef}  ></canvas>
+  <CanvasMarco/>
   </div>
               <div className={styles.barra_tools}>
                 <div>
