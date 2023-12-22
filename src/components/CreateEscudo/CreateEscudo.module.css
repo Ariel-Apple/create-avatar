@@ -11,3 +11,127 @@
     margin-top: -1em;
     font-weight: 800;
   }
+
+
+  .marco_container {
+    display: flex;
+    flex-wrap: wrap;
+  
+  }
+  
+  .btn_marco{
+      width: 7em;
+      cursor: pointer;
+      display: grid;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .title_marco {
+      margin-top: -1em;
+      font-weight: 800;
+    }
+    
+    .btn_seconds{
+      display: grid;
+      gap: 2em;
+      
+    }
+    .btn_exit {
+      display: grid;
+    }
+    
+    .btn_exit img {
+      width: 7em;
+      cursor: pointer;
+      
+    }
+    .element_center {
+      display: grid;
+      justify-content: center;
+      gap: 5%; 
+      margin-top: 1em;
+      margin: auto;
+
+    }
+  
+    .crea_viñeta {
+      margin: auto;
+      }
+     
+      
+    .marco_ciencia {
+      object-fit: cover;
+      border: 1px solid black;
+      background-color: white;
+    }
+  
+    .canva {
+      width: 10em;
+  
+  
+    }
+    
+  
+    .crea_viñeta img{
+    width: 22em;
+    }
+    
+
+    .tools_container {
+      display: grid;
+    }
+    .barra_tools {
+      display: flex;
+      width: 25em;
+      justify-content: center;
+  
+    }
+
+    .stickers img {
+      width: 5em;
+
+    }
+
+    .barra_stickers {
+      background: grey;
+
+    }
+  .img_escudo {
+
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+  }
+
+
+  
+
+    .globo_container {
+      margin-top: -20em;
+      position: absolute;
+      background-color: white;
+      overflow: scroll;
+      max-height: 20em;
+      overflow-x: hidden;
+    }
+  
+    .globo {
+      display: flex;
+    }
+  
+    .btn_tools:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  
+    @media (max-width: 1440px) {
+    
+        .barra_tools {
+          display: flex;
+          width: 20em;
+          justify-content: center;
+      
+        }
+    
+    }
