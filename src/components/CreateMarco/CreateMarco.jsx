@@ -3,12 +3,9 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import styles from "./CreateMarco.module.css";
 import backgroundImage from "../../image/FONDO_marco.png";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import FondoDefaultImage from "../../image/MARCOS/Fondos/FONDOS_COMIC.jpg";
+import { fabric } from 'fabric';
+import { useMediaQuery } from '@mui/material';
 import CanvasMarco from "./CanvasMarco";
 
 const style = {
@@ -33,22 +30,25 @@ export default function CreateMarco() {
   const [fondo, setFondo] = React.useState(false);
   const [marcos, setMarcos] = React.useState(false);
   const [fotos, setFotos] = React.useState(false);
-
-
-  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const inputRef = useRef(null);
 
+  const handleCargarFotoClick = () => {
+    inputRef.current.click();
+  };
 
-
-
-  
-  const handleFotos= (e) => {
+  const handleImagenSeleccionada = (event) => {
+    // Manejar la lógica cuando se selecciona una imagen
+    // Puedes acceder a la imagen seleccionada a través de event.target.files
+    console.log(event.target.files[0]);
+  };
+  const handleFotos = (e) => {
     e.preventDefault();
     setFondo(false);
     setGlobos(false);
     setMarcos(false);
-    setFotos(true)
+    setFotos(true);
   };
   const handleFondo = (e) => {
     e.preventDefault();
@@ -68,122 +68,103 @@ export default function CreateMarco() {
     setGlobos(true);
   };
 
-  const handleMarcos= (e) => {
+  const handleMarcos = (e) => {
     e.preventDefault();
     setFondo(false);
     setGlobos(false);
     setFotos(false);
 
     setMarcos(true);
-
   };
 
 
 
-
+  const handleDescargarLienzo = () => {
+    const canvas = canvasRef.current;
+  
+    if (canvas) {
+      const dataURL = canvas.toDataURL({ format: 'png', quality: 0.8 });
+  
+      const link = document.createElement('a');
+      link.href = dataURL;
+      link.download = 'mi_imagen.png'; // Puedes personalizar el nombre del archivo
+      document.body.appendChild(link);
+  
+      link.click();
+  
+      document.body.removeChild(link);
+    }
+  };
+  
+  
 
   const canvasRef = useRef(null);
-  const isDragging = useRef(false);
-  const offsetX = useRef(0);
-  const offsetY = useRef(0);
+  const canvasWidth = useMediaQuery('(max-width:1440px)') ? 640 : 800;
+  const canvasHeight = useMediaQuery('(max-width:1440px)') ? 300 : 400;
+  let zIndexCounter = 1;
+  let currentImage = null; // Referencia a la imagen actualmente editable
 
-  const handleDrop = (event) => {
-    event.preventDefault();
+  React.useEffect(() => {
+    const canvas = new fabric.Canvas(canvasRef.current, {
+      width: canvasWidth,
+      height: canvasHeight,
+      backgroundColor: '#f0f0f0',
+    });
+    const addImage = (img) => {
+      const scale = canvasWidth / img.width;
 
-    const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-    const file = event.dataTransfer.files[0];
+      const fabricImage = new fabric.Image(img, {
+        left: 0,
+        top: 0,
+        scaleX: scale,
+        scaleY: scale,
+        selectable: true,
+        hasControls: true,
+        zIndex: zIndexCounter++,
+      });
 
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.src = e.target.result;
-        img.onload = () => {
-          // Dibujar la primera imagen (imagen principal)
-          context.drawImage(img, 0, 0, canvas.width, canvas.height);
-        };
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+      // Deshabilitar la interacción y manipulación para las imágenes anteriores
+      if (currentImage) {
+        currentImage.set({
+          selectable: false,
+          hasControls: false,
+        });
+      }
 
-  const handleMouseDown = (event) => {
-    isDragging.current = true;
-    offsetX.current = event.nativeEvent.offsetX;
-    offsetY.current = event.nativeEvent.offsetY;
-  };
+      // Agregar la nueva imagen en la parte superior del lienzo
+      canvas.add(fabricImage);
+      canvas.bringToFront(fabricImage);
 
-  const handleMouseUp = () => {
-    isDragging.current = false;
-  };
+      // Establecer la imagen actual como editable
+      currentImage = fabricImage;
 
-  const handleMouseMove = (event) => {
-    if (isDragging.current) {
-      const canvas = canvasRef.current;
-      const context = canvas.getContext("2d");
-
-      // Limpiar el canvas
-      context.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Dibujar la primera imagen (imagen principal)
-      const img = new Image();
-      img.src = "ruta-de-tu-imagen-principal.png"; // Reemplaza con la ruta de tu imagen principal
-      img.onload = () => {
-        context.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        // Dibujar la segunda imagen (imagen que se superpone)
-        const overlayImage = new Image();
-        overlayImage.src = "ruta-de-tu-imagen-superpuesta.png"; // Reemplaza con la ruta de tu imagen superpuesta
-        const x = event.nativeEvent.offsetX - offsetX.current;
-        const y = event.nativeEvent.offsetY - offsetY.current;
-        context.drawImage(
-          overlayImage,
-          x,
-          y,
-          overlayImage.width,
-          overlayImage.height
-        );
-      };
-    }
-  };
-
-  const setDefaultBackground = () => {
-    const canvas = canvasRef.current;
-    const context = canvas.getContext("2d");
-
-    // Dibujar el fondo por defecto
-    const backgroundImage = new Image();
-    backgroundImage.src = "ruta-de-tu-imagen-de-fondo.png"; // Reemplaza con la ruta de tu imagen de fondo
-    backgroundImage.onload = () => {
-      context.drawImage(
-        backgroundImage,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
+      canvas.renderAll();
     };
-  };
 
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
+    canvas.wrapperEl.addEventListener('drop', (event) => {
+      event.preventDefault();
 
-  const handleSubirImagen = (file) => {
-    // Obtener referencia al componente CanvasMarco
-    const canvasComponent = canvasRef.current;
+      const file = event.dataTransfer.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.src = e.target.result;
+          img.onload = () => {
+            addImage(img);
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
-    // Llamar a la función para subir la imagen
-    canvasComponent.subirImagenAlLienzo(file);
-  };
+    return () => {
+      canvas.dispose();
+    };
+  }, [canvasWidth, canvasHeight]);
 
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      handleSubirImagen(file);
-    }
-  };
+
+
   
   return (
     <div>
@@ -200,7 +181,7 @@ export default function CreateMarco() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        onRendered={setDefaultBackground} // Llama a la función al renderizar el modal
+        // Llama a la función al renderizar el modal
       >
         <Box sx={style}>
           <div className={styles.marco_container}>
@@ -226,7 +207,7 @@ export default function CreateMarco() {
                   alt="not-found"
                 />
               </div>
-              <div className={styles.btn_exit}>
+              <div onClick={handleDescargarLienzo} className={styles.btn_exit}>
                 <img
                   src={require("../../image/BOTON_DESCARGAR.png")}
                   alt="not-found"
@@ -237,10 +218,9 @@ export default function CreateMarco() {
               <div className={styles.crea_viñeta}>
                 <img src={require("../../image/Crea_tu_viñeta.png")} alt="" />
               </div>
-              <div>
- 
-      <CanvasMarco ref={canvasRef} />
-    </div>
+  <div >
+              <canvas ref={canvasRef}  ></canvas>
+  </div>
               <div className={styles.barra_tools}>
                 <div>
                   <img
@@ -248,37 +228,46 @@ export default function CreateMarco() {
                     alt=""
                   />
                 </div>
-                <div onClick={handleMarcos}>
+                <div className={styles.btn_tools}>
+                  <input
+                    type="file"
+                    ref={inputRef}
+                    onChange={handleImagenSeleccionada}
+                    accept="image/*"
+                    style={{ display: "none" }}
+                  />
+
                   <img
                     src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/CARGAR_FOTO.png")}
                     alt=""
+                    onClick={handleCargarFotoClick}
                   />
                 </div>
-                <div onClick={handleMarcos}>
+                <div className={styles.btn_tools} onClick={handleMarcos}>
                   <img
                     src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/MARCO.png")}
                     alt=""
                   />
                 </div>
-                <div onClick={handleFondo}>
+                <div className={styles.btn_tools} onClick={handleFondo}>
                   <img
                     src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/FONDO.png")}
                     alt=""
                   />
                 </div>
-                <div onClick={handleGlobos}>
+                <div className={styles.btn_tools} onClick={handleGlobos}>
                   <img
                     src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/GLOBO.png")}
                     alt=""
                   />
                 </div>
-                <div>
+                <div className={styles.btn_tools}>
                   <img
                     src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/TIPOGRAFÍA.png")}
                     alt=""
                   />
                 </div>
-                <div>
+                <div className={styles.btn_tools}>
                   <img
                     src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/STIKERS.png")}
                     alt=""
@@ -424,7 +413,7 @@ export default function CreateMarco() {
                             </div>
                             <div>
                               <img
-                                 src={require("../../image/MARCOS/Fondos/FONDO_01.jpg")}
+                                src={require("../../image/MARCOS/Fondos/FONDO_01.jpg")}
                                 alt=""
                               />
                             </div>
@@ -446,13 +435,13 @@ export default function CreateMarco() {
                           <div className={styles.globo}>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/Fondos/FONDO_04.jpg")}
+                                src={require("../../image/MARCOS/Fondos/FONDO_04.jpg")}
                                 alt=""
                               />
                             </div>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/Fondos/FONDO_05.jpg")}
+                                src={require("../../image/MARCOS/Fondos/FONDO_05.jpg")}
                                 alt=""
                               />
                             </div>
@@ -466,7 +455,7 @@ export default function CreateMarco() {
                             </div>
                             <div>
                               <img
-                                 src={require("../../image/MARCOS/Fondos/FONDO_07.jpg")}
+                                src={require("../../image/MARCOS/Fondos/FONDO_07.jpg")}
                                 alt=""
                               />
                             </div>
@@ -480,7 +469,7 @@ export default function CreateMarco() {
                             </div>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/Fondos/FONDO_09.jpg")}
+                                src={require("../../image/MARCOS/Fondos/FONDO_09.jpg")}
                                 alt=""
                               />
                             </div>
@@ -499,12 +488,11 @@ export default function CreateMarco() {
                               />
                             </div>
                           </div>
-                        
                         </CardContent>
                       </React.Fragment>
                     </div>
                   )}
-                     {marcos && (
+                  {marcos && (
                     <div className={styles.globo_container}>
                       <React.Fragment>
                         <CardContent>
@@ -525,7 +513,7 @@ export default function CreateMarco() {
                           <div className={styles.globo}>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/MARCOS/MARCO_03.png")}
+                                src={require("../../image/MARCOS/MARCOS/MARCO_03.png")}
                                 alt=""
                               />
                             </div>
@@ -539,13 +527,13 @@ export default function CreateMarco() {
                           <div className={styles.globo}>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/MARCOS/MARCO_05.png")}
+                                src={require("../../image/MARCOS/MARCOS/MARCO_05.png")}
                                 alt=""
                               />
                             </div>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/MARCOS/MARCO_06.png")}
+                                src={require("../../image/MARCOS/MARCOS/MARCO_06.png")}
                                 alt=""
                               />
                             </div>
@@ -559,7 +547,7 @@ export default function CreateMarco() {
                             </div>
                             <div>
                               <img
-                                 src={require("../../image/MARCOS/MARCOS/MARCO_08.png")}
+                                src={require("../../image/MARCOS/MARCOS/MARCO_08.png")}
                                 alt=""
                               />
                             </div>
@@ -567,13 +555,13 @@ export default function CreateMarco() {
                           <div className={styles.globo}>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/MARCOS/MARCO_09.png")}
+                                src={require("../../image/MARCOS/MARCOS/MARCO_09.png")}
                                 alt=""
                               />
                             </div>
                             <div>
                               <img
-                               src={require("../../image/MARCOS/MARCOS/MARCO_10.png")}
+                                src={require("../../image/MARCOS/MARCOS/MARCO_10.png")}
                                 alt=""
                               />
                             </div>
@@ -592,7 +580,6 @@ export default function CreateMarco() {
                               />
                             </div>
                           </div>
-                        
                         </CardContent>
                       </React.Fragment>
                     </div>

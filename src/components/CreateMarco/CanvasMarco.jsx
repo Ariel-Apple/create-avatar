@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { fabric } from 'fabric';
 import { useMediaQuery } from '@mui/material';
-const CanvasMarco = () => {
+const CanvasMarco = (props, ref) => {
   const canvasRef = useRef(null);
   const canvasWidth = useMediaQuery('(max-width:1440px)') ? 640 : 800;
   const canvasHeight = useMediaQuery('(max-width:1440px)') ? 300 : 400;
@@ -66,7 +66,7 @@ const CanvasMarco = () => {
     return () => {
       canvas.dispose();
     };
-  }, []);
+  }, [canvasWidth, canvasHeight, ref]);
 
   return (
     <div>
