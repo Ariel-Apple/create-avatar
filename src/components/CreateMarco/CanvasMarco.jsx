@@ -737,6 +737,43 @@ const CanvasMarco = (props, ref) => {
                         />
                       </div>
                     </div>
+                    <div className={styles.globo}>
+                      <div>
+                      <img
+                          src={require("../../image/MARCOS/STIKERS/Stikers26.png")}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <img
+                          src={require("../../image/MARCOS/STIKERS/Stikers27.png")}
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.globo}>
+                      <div>
+                      <img
+                          src={require("../../image/MARCOS/STIKERS/Stikers28.png")}
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <img
+                          src={require("../../image/MARCOS/STIKERS/Stikers29.png")}
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div className={styles.globo}>
+                      <div>
+                      <img
+                          src={require("../../image/MARCOS/STIKERS/Stikers30.png")}
+                          alt=""
+                        />
+                      </div>
+              
+                    </div>
                   </CardContent>
                 </React.Fragment>
               </div>
