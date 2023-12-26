@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { fabric } from 'fabric';
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import CanvasEscudo from '../components/CreateEscudo/CanvasEscudo';
 
 const style = {
   position: "absolute",
@@ -64,20 +65,7 @@ const FabricCanvas = () => {
 
   return (
     <div>
-      <button onClick={handleOpen}>Abrir Modal</button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <button onClick={handleAgregarTexto}>Agregar Texto</button>
-          <div>
-            <canvas ref={canvasRef} />
-          </div>
-        </Box>
-      </Modal>
+    <CanvasEscudo/>
     </div>
   );
 };
