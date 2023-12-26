@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage'
 import Test from "./pages/test";
+import CanvasEscudo from "./components/CreateEscudo/CanvasEscudo";
 
 function App() {
   return (
