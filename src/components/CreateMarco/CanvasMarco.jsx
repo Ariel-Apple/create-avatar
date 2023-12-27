@@ -208,11 +208,14 @@ const CanvasMarco = (props, ref) => {
     <div className={styles.marco_container}>
       <div className={styles.btn_seconds}>
         <div className={styles.btn_exit}>
+        <a href="/">
           <img
             src={require("../../image/BOTON_SALIR.png")}
             onClick={handleClose}
             alt="not-found"
           />
+          </a>
+
         </div>
         <div className={styles.btn_exit}>
           <img
