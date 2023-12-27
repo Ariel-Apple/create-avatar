@@ -387,7 +387,14 @@ export default function CreateAvatar() {
   };
 
  
-  
+  const backdropStyle = {
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo negro con opacidad
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  };
   
 
   return (
@@ -401,11 +408,11 @@ export default function CreateAvatar() {
         />
         <div className={styles.title_avatar}>AVATAR</div>
       </div>
-      <Modal
-        open={open}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+      {open && (
+
+        <div style={backdropStyle}>
+          <div>
+          <div className={styles.modal}>
         <Box sx={style}>
           <div className={styles.createavatar_container}>
             <div>
@@ -3276,7 +3283,11 @@ export default function CreateAvatar() {
 
           </div>
         </Box>
-      </Modal>
+        </div>
+        </div>
+        </div>
+      )}
+
     </div>
   );
 }

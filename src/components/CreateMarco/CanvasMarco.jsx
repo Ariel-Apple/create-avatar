@@ -145,11 +145,12 @@ const CanvasMarco = (props, ref) => {
 
   const limpiarLienzo = () => {
     const canvas = canvasRef.current;
-    const objects = canvas.getObjects();
-
-    objects.forEach((obj) => {
-      canvas.remove(obj);
-    });
+    if (canvas) {
+      const objects = canvas.getObjects();
+      objects.forEach((obj) => {
+        canvas.remove(obj);
+      });
+    }
   };
 
   return (
