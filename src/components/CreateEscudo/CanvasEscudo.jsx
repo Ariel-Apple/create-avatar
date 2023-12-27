@@ -4,7 +4,7 @@ import { useMediaQuery } from "@mui/material";
 import styles from "./CreateEscudo.module.css";
 import { Link } from "react-router-dom";
 
-const CanvasEscudo = (props, {handleClose}) => {
+const CanvasEscudo = (props, { handleClose }) => {
   const [cintillos, setCintillos] = React.useState(false);
 
   const [stickers, setStickers] = React.useState(true);
@@ -202,8 +202,8 @@ const CanvasEscudo = (props, {handleClose}) => {
     <div className={styles.marco_container}>
       <div className={styles.btn_seconds}>
         <div className={styles.btn_exit}>
-          <a href='/'>
-          <img  src={require("../../image/BOTON_SALIR.png")} alt="not-found" />
+          <a href="/">
+            <img src={require("../../image/BOTON_SALIR.png")} alt="not-found" />
           </a>
         </div>
         <div className={styles.btn_exit}>
@@ -249,8 +249,11 @@ const CanvasEscudo = (props, {handleClose}) => {
               alt=""
               onClick={handleAgregarTexto}
             />
-      <input type="color" value={textOptions.textColor} onChange={(e) => handleTextColorChange(e.target.value)} />
-
+            <input
+              type="color"
+              value={textOptions.textColor}
+              onChange={(e) => handleTextColorChange(e.target.value)}
+            />
           </div>
           <div className={styles.btn_tools}>
             <img
