@@ -21,6 +21,7 @@ const CanvasEscudo = (props, {handleClose}) => {
   const [textOptions, setTextOptions] = useState({
     fontFamily: "Arial",
     fontSize: 20,
+    textColor: "black",
   });
 
   const handleEscudos = (e) => {
@@ -135,8 +136,7 @@ const CanvasEscudo = (props, {handleClose}) => {
         top: 50,
         fontSize: textOptions.fontSize,
         fontFamily: textOptions.fontFamily,
-        
-        fill: "black",
+        fill: textOptions.textColor,
       });
 
       text.on("changed", function () {
@@ -192,7 +192,12 @@ const CanvasEscudo = (props, {handleClose}) => {
       document.body.removeChild(link);
     }
   };
-
+  const handleTextColorChange = (color) => {
+    setTextOptions((prevOptions) => ({
+      ...prevOptions,
+      textColor: color,
+    }));
+  };
   return (
     <div className={styles.marco_container}>
       <div className={styles.btn_seconds}>
@@ -244,6 +249,8 @@ const CanvasEscudo = (props, {handleClose}) => {
               alt=""
               onClick={handleAgregarTexto}
             />
+      <input type="color" value={textOptions.textColor} onChange={(e) => handleTextColorChange(e.target.value)} />
+
           </div>
           <div className={styles.btn_tools}>
             <img

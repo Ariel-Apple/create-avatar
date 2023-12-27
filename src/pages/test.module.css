@@ -1,3 +1,16 @@
 .s {
   z-index: 5 ;
 }
+
+@font-face {
+  font-family: 'Arial';
+  src: url('../image/FONT/Bangers-Regular.ttf') format('truetype');
+  /* Agrega configuraciones adicionales según sea necesario */
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('../image/FONT/Comication.ttf') format('truetype');
+  /* Agrega configuraciones adicionales según sea necesario */
+}
+/* Agrega otras fuentes según sea necesario */
