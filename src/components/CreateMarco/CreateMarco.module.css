@@ -80,7 +80,7 @@
     display: flex;
   }
 
-  .btn_tools:hover {
+  .btn_tools img:hover {
     opacity: 0.5;
     cursor: pointer;
   }

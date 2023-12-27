@@ -10,7 +10,13 @@ const CanvasMarco = (props, ref) => {
   const [fondo, setFondo] = React.useState(false);
   const [marcos, setMarcos] = React.useState(false);
   const [stickers, setStickers] = React.useState(false);
+  const [canvas, setCanvas] = React.useState("");
 
+  const [textOptions, setTextOptions] = React.useState({
+    fontFamily: "Arial",
+    fontSize: 20,
+    textColor: "black",
+  });
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -86,6 +92,7 @@ const CanvasMarco = (props, ref) => {
         zIndex: zIndexCounter++,
       });
 
+
       // Deshabilitar la interacción y manipulación para las imágenes anteriores
       if (currentImage) {
         currentImage.set({
@@ -120,6 +127,7 @@ const CanvasMarco = (props, ref) => {
         reader.readAsDataURL(file);
       }
     });
+    setCanvas(canvas);
 
     return () => {
       canvas.dispose();
@@ -143,16 +151,59 @@ const CanvasMarco = (props, ref) => {
     }
   };
 
-  const limpiarLienzo = () => {
-    const canvas = canvasRef.current;
+  const handleLimpiarLienzo = () => {
     if (canvas) {
+      // Obtener todos los objetos en el lienzo
       const objects = canvas.getObjects();
+
+      // Iterar sobre los objetos y eliminarlos
       objects.forEach((obj) => {
-        canvas.remove(obj);
+        // Verificar si el objeto no es el fondo (background)
+        if (!obj.isType("Image") || obj.get("id") !== "background") {
+          canvas.remove(obj);
+        }
       });
+
+      canvas.renderAll(); // Renderizar los cambios
     }
   };
 
+  const handleAgregarTexto = () => {
+    if (canvas) {
+      const text = new fabric.IText("Escribe aquí", {
+        left: 50,
+        top: 50,
+        fontSize: textOptions.fontSize,
+        fontFamily: textOptions.fontFamily,
+        fill: textOptions.textColor,
+      });
+
+      text.on("changed", function () {
+        setTextOptions({
+          fontFamily: text.get("fontFamily"),
+          fontSize: text.get("fontSize"),
+        });
+      });
+
+      text.on("input", function () {
+        setTextOptions({
+          fontFamily: text.get("fontFamily"),
+          fontSize: text.get("fontSize"),
+        });
+      });
+
+      canvas.add(text);
+      canvas.setActiveObject(text);
+      text.enterEditing();
+      text.hiddenTextarea.focus();
+    }
+  };
+  const handleTextColorChange = (color) => {
+    setTextOptions((prevOptions) => ({
+      ...prevOptions,
+      textColor: color,
+    }));
+  };
   return (
     <div className={styles.marco_container}>
       <div className={styles.btn_seconds}>
@@ -189,6 +240,7 @@ const CanvasMarco = (props, ref) => {
           <img src={require("../../image/Crea_tu_viñeta.png")} alt="" />
         </div>
         <div>
+          
           <canvas ref={canvasRef}></canvas>
         </div>
         <div className={styles.barra_tools}>
@@ -235,6 +287,12 @@ const CanvasMarco = (props, ref) => {
             <img
               src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/TIPOGRAFÍA.png")}
               alt=""
+              onClick={handleAgregarTexto}
+            />
+                  <input
+              type="color"
+              value={textOptions.textColor}
+              onChange={(e) => handleTextColorChange(e.target.value)}
             />
           </div>
           <div className={styles.btn_tools}>
@@ -248,6 +306,7 @@ const CanvasMarco = (props, ref) => {
             <img
               src={require("../../image/MARCOS/BARRA DE HERRAMIENTAS/DESHACER.png")}
               alt=""
+              onClick={handleLimpiarLienzo}
             />
           </div>
           <div>

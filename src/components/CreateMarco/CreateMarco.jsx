@@ -26,75 +26,12 @@ const style = {
 
 export default function CreateMarco() {
   const [open, setOpen] = useState(false);
-  const [globos, setGlobos] = React.useState(false);
-  const [fondo, setFondo] = React.useState(false);
-  const [marcos, setMarcos] = React.useState(false);
-  const [fotos, setFotos] = React.useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const inputRef = useRef(null);
 
-  const handleCargarFotoClick = () => {
-    inputRef.current.click();
-  };
 
-  const handleImagenSeleccionada = (event) => {
-    // Manejar la lógica cuando se selecciona una imagen
-    // Puedes acceder a la imagen seleccionada a través de event.target.files
-    console.log(event.target.files[0]);
-  };
-  const handleFotos = (e) => {
-    e.preventDefault();
-    setFondo(false);
-    setGlobos(false);
-    setMarcos(false);
-    setFotos(true);
-  };
-  const handleFondo = (e) => {
-    e.preventDefault();
-    setGlobos(false);
-    setMarcos(false);
-    setFotos(false);
-
-    setFondo(true);
-  };
-
-  const handleGlobos = (e) => {
-    e.preventDefault();
-    setFondo(false);
-    setMarcos(false);
-    setFotos(false);
-
-    setGlobos(true);
-  };
-
-  const handleMarcos = (e) => {
-    e.preventDefault();
-    setFondo(false);
-    setGlobos(false);
-    setFotos(false);
-
-    setMarcos(true);
-  };
-
-
-
-  const handleDescargarLienzo = () => {
-    const canvas = canvasRef.current;
-  
-    if (canvas) {
-      const dataURL = canvas.toDataURL({ format: 'png', quality: 0.8 });
-  
-      const link = document.createElement('a');
-      link.href = dataURL;
-      link.download = 'mi_imagen.png'; // Puedes personalizar el nombre del archivo
-      document.body.appendChild(link);
-  
-      link.click();
-  
-      document.body.removeChild(link);
-    }
-  };
   
   
 
@@ -163,7 +100,14 @@ export default function CreateMarco() {
     };
   }, [canvasWidth, canvasHeight]);
 
-
+  const backdropStyle = {
+    backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo negro con opacidad
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  };
 
   
   return (
@@ -176,22 +120,21 @@ export default function CreateMarco() {
         />
         <div className={styles.title_marco}>MARCO</div>
       </div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        // Llama a la función al renderizar el modal
-      >
+    
+      {open && (
+        <div style={backdropStyle}>
+          <div>
+            <div className={styles.modal}>
         <Box sx={style}>
     
             
-  <div >
   <CanvasMarco/>
-  </div>
            
         </Box>
-      </Modal>
+        </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

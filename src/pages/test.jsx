@@ -3,6 +3,7 @@ import { fabric } from 'fabric';
 import { useMediaQuery } from "@mui/material";
 import ArialFont from '../image/FONT/Bangers-Regular.ttf';
 import HelveticaFont from '../image/FONT/Comication.ttf';
+
 const TuComponente = () => {
   const [cintillos, setCintillos] = useState(false);
   const [stickers, setStickers] = useState(true);
@@ -11,6 +12,7 @@ const TuComponente = () => {
 
   const [svgColor, setSvgColor] = useState("");
   const [canvas, setCanvas] = useState("");
+  const [canvasBackground, setCanvasBackground] = useState("#f0f0f0");
 
   const canvasRef = useRef(null);
   const canvasWidth = useMediaQuery("(max-width:1440px)") ? 400 : 600;
@@ -83,7 +85,7 @@ const TuComponente = () => {
     const newCanvas = new fabric.Canvas(canvasRef.current, {
       width: canvasWidth,
       height: canvasHeight,
-      backgroundColor: "#f0f0f0",
+      backgroundColor: canvasBackground,
     });
 
     const addObject = (object) => {
@@ -143,7 +145,7 @@ const TuComponente = () => {
       newCanvas.wrapperEl.removeEventListener("drop", handleDrop);
       newCanvas.dispose();
     };
-  }, [canvasWidth, canvasHeight]);
+  }, [canvasWidth, canvasHeight, canvasBackground]);
 
   const handleLimpiarLienzo = () => {
     if (canvas) {
@@ -158,8 +160,7 @@ const TuComponente = () => {
       canvas.renderAll();
     }
   };
- 
-  
+
   const handleDescargarLienzo = () => {
     const dataURL = canvas.toDataURL({ format: "png", quality: 0.8 });
 
@@ -172,27 +173,25 @@ const TuComponente = () => {
 
     document.body.removeChild(link);
   };
+
   const FontButtons = () => {
     return (
       <div>
-<button onClick={() => handleFontChange({ target: { value: 'Arial' } })}>Arial</button>
-<button onClick={() => handleFontChange({ target: { value: 'Helvetica' } })}>Helvetica</button>
-
+        <button onClick={() => handleFontChange({ target: { value: 'Arial' } })}>Arial</button>
+        <button onClick={() => handleFontChange({ target: { value: 'Helvetica' } })}>Helvetica</button>
       </div>
     );
   };
+
   return (
     <div>
-    <FontButtons />
+   
+      <input
+        type="color"
+        value={canvasBackground}
+        onChange={(e) => setCanvasBackground(e.target.value)}
+      />
 
-
-      <input type="number" value={textOptions.fontSize} onChange={handleFontSizeChange} />
-
-      <input type="color" value={textOptions.textColor} onChange={(e) => handleTextColorChange(e.target.value)} />
-
-      <button onClick={handleAgregarTexto}>Agregar Texto</button>
-
-      {/* Resto de tu interfaz de usuario */}
 
       <canvas ref={canvasRef}></canvas>
 

@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 
 const CanvasEscudo = (props, { handleClose }) => {
   const [cintillos, setCintillos] = React.useState(false);
+  const [canvasBackground, setCanvasBackground] = useState("#f0f0f0");
 
   const [stickers, setStickers] = React.useState(true);
   const [colors, setColors] = React.useState(false);
   const [escudos, setEscudos] = React.useState(false);
 
-  const [svgColor, setSvgColor] = useState(""); // Color inicial del SVG en el botón
+  const [svgColor, setSvgColor] = useState("#ffff"); // Color inicial del SVG en el botón
   const [canvas, setCanvas] = useState("");
 
   const canvasRef = useRef(null);
@@ -63,7 +64,7 @@ const CanvasEscudo = (props, { handleClose }) => {
     const newCanvas = new fabric.Canvas(canvasRef.current, {
       width: canvasWidth,
       height: canvasHeight,
-      backgroundColor: "#f0f0f0",
+      backgroundColor: canvasBackground,
     });
 
     const addObject = (object) => {
@@ -123,7 +124,7 @@ const CanvasEscudo = (props, { handleClose }) => {
       newCanvas.wrapperEl.removeEventListener("drop", handleDrop);
       newCanvas.dispose();
     };
-  }, [canvasWidth, canvasHeight]);
+  }, [canvasWidth, canvasHeight, canvasBackground]);
 
   const changeColor = (newColor) => {
     setSvgColor(newColor);
@@ -198,6 +199,8 @@ const CanvasEscudo = (props, { handleClose }) => {
       textColor: color,
     }));
   };
+
+ 
   return (
     <div className={styles.marco_container}>
       <div className={styles.btn_seconds}>
@@ -224,6 +227,11 @@ const CanvasEscudo = (props, { handleClose }) => {
           <img src={require("../../image/ESCUDO/TITULAR.png")} alt="" />
         </div>
         <div>
+        <input
+        type="color"
+        value={canvasBackground}
+        onChange={(e) => setCanvasBackground(e.target.value)}
+      />
           <canvas
             ref={canvasRef}
             id="canvas"
