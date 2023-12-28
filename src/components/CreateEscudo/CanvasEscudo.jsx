@@ -796,323 +796,7 @@ const CanvasEscudo = (props, { handleClose }) => {
           </div>
         )}
 
-        {cintillos && (
-          <div className={styles.barra_stickers}>
-            <div className={styles.img_container}>
-              <div className={styles.img_escudo}>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M480.16 148.54H74.75l23.99-41.23-23.99-40.44h405.41l-20.06 40.44 20.06 41.23z" style="fill:#4e2178; stroke: #0BC6FF; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                  >
-                    <path
-                      d="M480.16 148.54H74.75l23.99-41.23-23.99-40.44h405.41l-20.06 40.44 20.06 41.23z"
-                      style={{
-                        fill: svgColor,
-                        stroke: "#220049",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M128.33 163.95c-31.03 0-56.24-25.22-56.24-56.24s25.21-56.25 56.24-56.25h298.25c31.03 0 56.24 25.22 56.24 56.25s-25.22 56.24-56.24 56.24H128.33Z" style="fill:#00b3ba; stroke: #004c4c; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                    {...props}
-                  >
-                    <path
-                      d="M128.33 163.95c-31.03 0-56.24-25.22-56.24-56.24s25.21-56.25 56.24-56.25h298.25c31.03 0 56.24 25.22 56.24 56.25s-25.22 56.24-56.24 56.24H128.33Z"
-                      style={{
-                        fill: "#00b3ba",
-                        stroke: "#004c4c",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M96.24 63.36c-.02.1 0 0-.02.13-.5 2.49.12.03-.62 2.46s.12.05-.86 2.4c-.97 2.35.11.05-1.09 2.3-1.2 2.24.11.07-1.31 2.18-1.41 2.11.1.07-1.51 2.04s.09.09-1.71 1.88c-1.8 1.8.08.09-1.88 1.71-1.97 1.61.08.1-2.04 1.52-2.11 1.41.06.11-2.18 1.31s.05.12-2.3 1.09c-2.35.97.04.12-2.4.86-2.43.74.03.12-2.47.62-.13.03-.02 0-.13.02v47.68c.1.02 0 0 .13.02 2.49.5.03-.12 2.47.62 2.43.74.05-.12 2.4.86 2.35.97.05-.11 2.3 1.09 2.24 1.2.07-.11 2.18 1.31 2.11 1.41.07-.1 2.04 1.52 1.97 1.61.09-.09 1.88 1.71 1.8 1.8.09-.08 1.71 1.88 1.61 1.97.1-.08 1.51 2.04 1.41 2.11.11-.06 1.31 2.18s.12-.05 1.09 2.3c.97 2.35.12-.04.86 2.4.74 2.43.12-.03.62 2.47.03.13 0 .03.02.13h362.43c.02-.1 0 0 .02-.13.5-2.49-.12-.03.62-2.47.74-2.43-.12-.05.86-2.4.97-2.35-.11-.05 1.09-2.3 1.2-2.24-.11-.07 1.31-2.18 1.41-2.11-.1-.07 1.52-2.04 1.61-1.97-.09-.09 1.71-1.88 1.8-1.8-.08-.09 1.88-1.71 1.97-1.61-.08-.1 2.04-1.52 2.11-1.41-.06-.11 2.18-1.31s-.05-.12 2.3-1.09c2.35-.97-.04-.12 2.4-.86 2.43-.74-.03-.12 2.46-.62.13-.03.03 0 .13-.02V83.88c-.1-.02 0 0-.13-.02-2.49-.5-.03.12-2.46-.62s-.05.12-2.4-.86c-2.35-.97-.05.11-2.3-1.09-2.24-1.2-.07.11-2.18-1.31-2.11-1.41-.07.1-2.04-1.52-1.97-1.61-.09.09-1.88-1.71-1.8-1.8-.09.08-1.71-1.88-1.61-1.97-.1.08-1.52-2.04-1.41-2.11-.11.06-1.31-2.18s-.12.05-1.09-2.3c-.97-2.35-.12.04-.86-2.4-.74-2.43-.12.03-.62-2.46-.03-.13 0-.03-.02-.13H96.24Z" style="fill:#f5c211; stroke: #876400; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                    {...props}
-                  >
-                    <path
-                      d="M96.24 63.36c-.02.1 0 0-.02.13-.5 2.49.12.03-.62 2.46s.12.05-.86 2.4c-.97 2.35.11.05-1.09 2.3-1.2 2.24.11.07-1.31 2.18-1.41 2.11.1.07-1.51 2.04s.09.09-1.71 1.88c-1.8 1.8.08.09-1.88 1.71-1.97 1.61.08.1-2.04 1.52-2.11 1.41.06.11-2.18 1.31s.05.12-2.3 1.09c-2.35.97.04.12-2.4.86-2.43.74.03.12-2.47.62-.13.03-.02 0-.13.02v47.68c.1.02 0 0 .13.02 2.49.5.03-.12 2.47.62 2.43.74.05-.12 2.4.86 2.35.97.05-.11 2.3 1.09 2.24 1.2.07-.11 2.18 1.31 2.11 1.41.07-.1 2.04 1.52 1.97 1.61.09-.09 1.88 1.71 1.8 1.8.09-.08 1.71 1.88 1.61 1.97.1-.08 1.51 2.04 1.41 2.11.11-.06 1.31 2.18s.12-.05 1.09 2.3c.97 2.35.12-.04.86 2.4.74 2.43.12-.03.62 2.47.03.13 0 .03.02.13h362.43c.02-.1 0 0 .02-.13.5-2.49-.12-.03.62-2.47.74-2.43-.12-.05.86-2.4.97-2.35-.11-.05 1.09-2.3 1.2-2.24-.11-.07 1.31-2.18 1.41-2.11-.1-.07 1.52-2.04 1.61-1.97-.09-.09 1.71-1.88 1.8-1.8-.08-.09 1.88-1.71 1.97-1.61-.08-.1 2.04-1.52 2.11-1.41-.06-.11 2.18-1.31s-.05-.12 2.3-1.09c2.35-.97-.04-.12 2.4-.86 2.43-.74-.03-.12 2.46-.62.13-.03.03 0 .13-.02V83.88c-.1-.02 0 0-.13-.02-2.49-.5-.03.12-2.46-.62s-.05.12-2.4-.86c-2.35-.97-.05.11-2.3-1.09-2.24-1.2-.07.11-2.18-1.31-2.11-1.41-.07.1-2.04-1.52-1.97-1.61-.09.09-1.88-1.71-1.8-1.8-.09.08-1.71-1.88-1.61-1.97-.1.08-1.52-2.04-1.41-2.11-.11.06-1.31-2.18s-.12.05-1.09-2.3c-.97-2.35-.12.04-.86-2.4-.74-2.43-.12.03-.62-2.46-.03-.13 0-.03-.02-.13H96.24Z"
-                      style={{
-                        fill: "#f5c211",
-                        stroke: "#876400",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M117.33 65.03h320.26l-33.32 85.35H150.65l-33.32-85.35Z" style="fill:#d6d903; stroke: #660; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                    {...props}
-                  >
-                    <path
-                      d="M117.33 65.03h320.26l-33.32 85.35H150.65l-33.32-85.35Z"
-                      style={{
-                        fill: "#d6d903",
-                        stroke: "#660",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className={styles.img_escudo}>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M126.67 56.7h369.42l-67.85 102.02H58.82L126.67 56.7Z" style="fill:#db2d4d; stroke:#750019; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                    {...props}
-                  >
-                    <path
-                      d="M126.67 56.7h369.42l-67.85 102.02H58.82L126.67 56.7Z"
-                      style={{
-                        fill: "#db2d4d",
-                        stroke: "#750019",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M91.79 156.97h371.33c0-11.59 9.39-20.98 20.98-20.98h0V79.41c-11.59 0-20.98-9.39-20.98-20.98H91.79c0 11.59-9.39 20.98-20.98 20.98h0v56.58c11.59 0 20.98 9.39 20.98 20.98h0Z" style="fill:#ededed; stroke:#7f7f7f; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                    {...props}
-                  >
-                    <path
-                      d="M91.79 156.97h371.33c0-11.59 9.39-20.98 20.98-20.98h0V79.41c-11.59 0-20.98-9.39-20.98-20.98H91.79c0 11.59-9.39 20.98-20.98 20.98h0v56.58c11.59 0 20.98 9.39 20.98 20.98h0Z"
-                      style={{
-                        fill: "#ededed",
-                        stroke: "#7f7f7f",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M71.22 81.16H41.29l16.12 34.05-16.12 34.05h63.14l-33.21-12.81V81.16zM483.7 81.16h29.92l-16.11 34.05 16.11 34.05h-63.14l33.22-12.81V81.16z" style="fill:#00b878; stroke:#005635; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="Capa_10"
-                    viewBox="0 0 554.91 215.41"
-                  >
-                    <defs>
-                      <style>
-                        {
-                          ".cls-1{fill:#00b878;stroke:#005635;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}"
-                        }
-                      </style>
-                    </defs>
-                    <path
-                      d="M71.22 81.16H41.29l16.12 34.05-16.12 34.05h63.14l-33.21-12.81V81.16zM483.7 81.16h29.92l-16.11 34.05 16.11 34.05h-63.14l33.22-12.81V81.16z"
-                      className="cls-1"
-                    />
-                    <path
-                      d="M277.46 66.15H75.6v68.11h403.71V66.15H277.46z"
-                      className="cls-1"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M455.58 107.7c8.61-4.5 14.5-13.51 14.5-23.9 0-14.89-12.07-26.96-26.96-26.96s-26.96 12.07-26.96 26.96h-277.4c0-14.89-12.08-26.96-26.97-26.96S84.83 68.91 84.83 83.8c0 10.39 5.89 19.4 14.51 23.9-8.62 4.51-14.51 13.51-14.51 23.9 0 14.9 12.07 26.96 26.96 26.96s26.97-12.07 26.97-26.96h277.4c0 14.9 12.07 26.96 26.96 26.96s26.96-12.07 26.96-26.96c0-10.4-5.89-19.4-14.5-23.9Z" style="fill:#f57657; stroke:#7c1400; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                  >
-                    <path
-                      d="M455.58 107.7c8.61-4.5 14.5-13.51 14.5-23.9 0-14.89-12.07-26.96-26.96-26.96s-26.96 12.07-26.96 26.96h-277.4c0-14.89-12.08-26.96-26.97-26.96S84.83 68.91 84.83 83.8c0 10.39 5.89 19.4 14.51 23.9-8.62 4.51-14.51 13.51-14.51 23.9 0 14.9 12.07 26.96 26.96 26.96s26.97-12.07 26.97-26.96h277.4c0 14.9 12.07 26.96 26.96 26.96s26.96-12.07 26.96-26.96c0-10.4-5.89-19.4-14.5-23.9Z"
-                      style={{
-                        fill: "#f57657",
-                        stroke: "#7c1400",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              <div
-                className={styles.img_escudo}
-                onDragStart={(event) => {
-                  const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="m467.96 107.7-41.48 41.64H128.43L86.96 107.7l41.47-41.63h298.05l41.48 41.63z" style="fill:#00a0ff; stroke:#006293; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                  event.dataTransfer.setData("text/plain", updatedSvgString);
-                }}
-              >
-                <div className={styles.stickers} draggable="true">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                  >
-                    <path
-                      d="m467.96 107.7-41.48 41.64H128.43L86.96 107.7l41.47-41.63h298.05l41.48 41.63z"
-                      style={{
-                        fill: "#00a0ff",
-                        stroke: "#006293",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="m467.96 107.7-41.48 41.64H128.43L86.96 107.7l41.47-41.63h298.05l41.48 41.63z" style="fill:#b7ae55; stroke:#006293; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                  >
-                    <path
-                      d="M455.26 175.97c-5.04-5.49-6.38-13.33-1.9-18.48l2.35-2.01 2.47-1.46c6.05-2.58 13.22 2.02 12.32 9.63l-.12 1.68-1.56-.78c-3.47-1.91-4.37-1.12-4.93-.67-1.23.78-2.01 4.25 1.12 5.82l1.57.56 3.02-.22c3.02-.9 6.05-3.7 6.38-8.29.56-6.94-4.59-12.43-9.63-13.33-1.23-.22-2.69 0-4.25.22l-370.06-2.9c-13.78 2.24-21.73-5.71-21.84-15.9l-.12-77.17c1.23-14.56 18.48-24.98 29.57-13.22 5.15 5.49 6.38 13.33 1.9 18.48l-2.24 2.02-2.46 1.45c-6.16 2.58-13.22-2.01-12.43-9.63l.22-1.68 1.46.78c3.47 1.9 4.37 1.12 5.04.67 1.12-.78 2.02-4.25-1.23-5.83l-1.45-.56-3.03.22c-3.13.78-6.05 3.69-6.5 8.29-.56 6.83 4.59 12.43 9.63 13.33 1.34.23 2.69 0 4.37-.22l369.95 2.9c13.89-2.24 21.84 5.72 21.84 15.79l.11 77.16c-1.12 14.67-18.48 25.09-29.57 13.33Z"
-                      style={{
-                        fill: "#b7ae55",
-                        fillRule: "evenodd",
-                        stroke: "#897903",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M93.98 55.3s-14.42 2.83-14.42 17.16v87.64s1.6-17.66 14.42-17.66h381.38l-27.71-45.13 27.71-42.01H93.98Z" style="fill:#d6d903; stroke: #660; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                    {...props}
-                  >
-                    <path
-                      d="M93.98 55.3s-14.42 2.83-14.42 17.16v87.64s1.6-17.66 14.42-17.66h381.38l-27.71-45.13 27.71-42.01H93.98Z"
-                      style={{
-                        fill: "#73d2de",
-                        stroke: "#44898e",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={styles.stickers}
-                  draggable="true"
-                  onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M93.98 55.3s-14.42 2.83-14.42 17.16v87.64s1.6-17.66 14.42-17.66h381.38l-27.71-45.13 27.71-42.01H93.98Z" style="fill:#dbd2bf; stroke: #84817b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
-                    event.dataTransfer.setData("text/plain", updatedSvgString);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 554.91 215.41"
-                  >
-                    <path
-                      d="M487.34 70.35h-97.19l46.43 10.99h-.09l-318.16-.03 46.41-10.97H67.57l33.6 35.49-33.48 24.27h68.99l4.17 14.96h272.53l4.29-14.93h69.54l-33.48-28.88 33.62-30.9Z"
-                      style={{
-                        fill: "#dbd2bf",
-                        stroke: "#84817b",
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: 10,
-                      }}
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+   
 
         {escudos && (
           <div className={styles.barra_stickers}>
@@ -1315,7 +999,12 @@ const CanvasEscudo = (props, { handleClose }) => {
                   className={styles.stickers}
                   draggable="true"
                   onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M227.58 74.02 35.34 206.55c-1.49 1.02-1.49 3.59 0 4.61l192 132.36c.69.47 1.54.48 2.23 0l192.47-132.36c1.49-1.02 1.49-3.59 0-4.61L229.81 74.02c-.69-.48-1.54-.48-2.23 0Z" style="fill:#c4a95f; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
+                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M227.58 74.02 35.34 206.55c-1.49 1.02-1.49 3.59 0 4.61l192 132.36c.69.47 1.54.48 2.23 0l192.47-132.36c1.49-1.02 1.49-3.59 0-4.61L229.81 74.02c-.69-.48-1.54-.48-2.23 0Z" style="fill:#c4a95f; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/>
+                    <path
+                    d="M378.01 184.17c-45.98-30.42-102.7-68.7-148.37-99.75l-.91-.62c-.12-.08-.05-.02-.04-.03h.02l-.84.58c-15.78 11.01-65.07 44.99-81.71 56.47-23.26 15.96-71.88 49.26-94.74 64.78l-3.65 2.49c-.47.21-.47 1.04-.23 1.35 26.06 18.34 74.85 52.32 100.67 70.72 7.19 5.02 21.63 15.38 28.78 20.47-7.36-4.89-22.1-14.6-29.42-19.54-25.76-17.03-74.89-50.4-100.71-67.79l-.91-.62c-2.52-1.42-2.95-5.51-.53-7.33 7.36-5.13 32.38-22.48 40.21-27.91 39.94-27.58 100.13-69.03 140.11-96.18l.98-.66c.6-.38 1.36-.6 2.12-.57 1.2 0 2.05.74 2.91 1.32 45.35 31.57 101.38 70.72 146.26 102.82Z"
+                    style=fill: "#fff",
+                  />
+                    </svg>`;
                     event.dataTransfer.setData("text/plain", updatedSvgString);
                   }}
                 >
@@ -1374,19 +1063,19 @@ const CanvasEscudo = (props, { handleClose }) => {
                   className={styles.stickers}
                   draggable="true"
                   onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M391.99 170.26c8.46 15.66 11.84 34.01 9.32 51.66-7.66 50.08-54.88 82.74-100.24 96.95-73.4 23.16-172.57 10.3-223.32-51.98-2.87-3.76-5.53-7.67-7.94-11.72 5.21 7.84 11.36 15.01 18.21 21.45 60.58 55.23 165.17 61.63 237.72 27.77 34.19-15.88 66.52-44.2 73.43-82.8 3.16-17.32.32-35.44-7.18-51.32Z" style="fill:#164194; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/>      <ellipse
-                  cx={228.69}
-                  cy={208.77}
-                  rx={180.01}
-                  ry={123.72}
-                  style=fill:#f5c211, stroke: "#1d1d1b",strokeMiterlimit: 10, strokeWidth: 5,
-                />  <path
-                d="M74.25 261.78c-30.08-39.11-23.65-86.56 10.13-120.99 38.12-38.28 95.08-53.73 147.98-52.72 32.52.61 65.27 7.55 94.56 21.91 16.64 8.27 32.19 18.97 44.9 32.46-3.07-2.84-7.22-6.58-10.49-9.05-5.09-4.18-11.39-8.32-17.02-11.81-17.77-10.43-37.41-18.06-57.47-22.72-57.31-13.21-121.86-6.9-172.68 23.8-50.86 30.68-76 86.41-39.9 139.12Z"
-                style=fill:#fff,
-              />      <path
-              d="M391.99 170.26c8.46 15.66 11.84 34.01 9.32 51.66-7.66 50.08-54.88 82.74-100.24 96.95-73.4 23.16-172.57 10.3-223.32-51.98-2.87-3.76-5.53-7.67-7.94-11.72 5.21 7.84 11.36 15.01 18.21 21.45 60.58 55.23 165.17 61.63 237.72 27.77 34.19-15.88 66.52-44.2 73.43-82.8 3.16-17.32.32-35.44-7.18-51.32Z"
-              style=fill:#c6bda7,
-            /></svg>`;
+                    const updatedSvgString =   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457.38 417.54">
+                    <g style="isolation: isolate;">
+                      <ellipse cx="228.69" cy="208.77" rx="180.01" ry="123.72" style="fill: #f5c211; stroke: #1d1d1b; strokeMiterlimit: 10; strokeWidth: 5;" />
+                      <g style="mixBlendMode: soft-light;">
+                        <path d="M74.25 261.78c-30.08-39.11-23.65-86.56 10.13-120.99 38.12-38.28 95.08-53.73 147.98-52.72 32.52.61 65.27 7.55 94.56 21.91 16.64 8.27 32.19 18.97 44.9 32.46-3.07-2.84-7.22-6.58-10.49-9.05-5.09-4.18-11.39-8.32-17.02-11.81-17.77-10.43-37.41-18.06-57.47-22.72-57.31-13.21-121.86-6.9-172.68 23.8-50.86 30.68-76 86.41-39.9 139.12Z" style="strokeWidth: 0; fill: #fff;" />
+                      </g>
+                      <g style="mixBlendMode: multiply;">
+                        <path d="M391.99 170.26c8.46 15.66 11.84 34.01 9.32 51.66-7.66 50.08-54.88 82.74-100.24 96.95-73.4 23.16-172.57 10.3-223.32-51.98-2.87-3.76-5.53-7.67-7.94-11.72 5.21 7.84 11.36 15.01 18.21 21.45 60.58 55.23 165.17 61.63 237.72 27.77 34.19-15.88 66.52-44.2 73.43-82.8 3.16-17.32.32-35.44-7.18-51.32Z" style="fill: #c6bda7; strokeWidth: 0;" />
+                      </g>
+                    </g>
+                  </svg>
+                `
+
                     event.dataTransfer.setData("text/plain", updatedSvgString);
                   }}
                 >
@@ -1446,7 +1135,17 @@ const CanvasEscudo = (props, { handleClose }) => {
                   className={styles.stickers}
                   draggable="true"
                   onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M393.9 83.28H63.49l-35.5 125.98 200.7 125 200.7-125L393.9 83.28z" style="fill:#ed8e0a; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
+                    const updatedSvgString = `      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457.38 417.54">
+                    <g style="isolation: isolate;">
+                      <path d="M393.9 83.28H63.49l-35.5 125.98 200.7 125 200.7-125L393.9 83.28z" style="fill: #ed8e0a; stroke: #1d1d1b; strokeMiterlimit: 10; strokeWidth: 5;" />
+                      <g style="mixBlendMode: soft-light;">
+                        <path d="M396.7 125.16c-2.52-7.73-7.15-23.36-9.56-31.12l.63.48c-53.09 1.01-106.18 1.39-159.27 1.64-51.4.14-107.68.12-159.27-.23l1.97-1.49c-5.21 17.94-18.74 64.25-23.91 81.59l-8.16 27.14-.30-.75 13.85 8.65 13.8 8.73-14.19-8.08-14.15-8.17-.43-.25.13-.5 7.21-27.41c4.57-17.28 17.33-64.2 22.19-82.07l.4-1.48h1.57c51.65-.34 107.81-.42 159.27-.26 53.09.25 106.18.62 159.27 1.62h.51l.12.47c2.1 7.82 6.28 23.64 8.3 31.48Z" style="strokeWidth: 0; fill: #fff;" />
+                      </g>
+                      <g style="mixBlendMode: multiply;">
+                        <path d="M66.49 219.8c39.51 22.53 83.29 48.06 122.69 71.33l40.68 24.14h-2.35c60.48-36.58 129.75-77.99 190.64-113.51l-.64 1.61c-4.77-17.38-11.05-41.23-15.71-58.63l-5.12-19.58 5.98 19.33c5.22 17.26 12.46 40.81 17.58 58.10l.31 1.03-.94.58c-60.33 37.32-129.87 79.24-190.94 115.69-52.78-32.09-110.19-67.12-162.19-100.09Z" style="fill: #d3b998; strokeWidth: 0;" />
+                      </g>
+                    </g>
+                  </svg>`;
                     event.dataTransfer.setData("text/plain", updatedSvgString);
                   }}
                 >
@@ -1503,7 +1202,16 @@ const CanvasEscudo = (props, { handleClose }) => {
                   className={styles.stickers}
                   draggable="true"
                   onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M393.16 152.09 245.18 85.62c-5.43-2.44-10.95-3.66-16.48-3.66s-11.05 1.22-16.49 3.66L64.23 152.09c-3.8 1.71-6.85 4.35-8.96 7.59-2.11 3.26-3.26 7.12-3.26 11.28v75.61c0 4.16 1.16 8.02 3.26 11.28 2.11 3.25 5.16 5.89 8.96 7.59l147.98 66.47c5.43 2.44 10.96 3.66 16.49 3.66s11.05-1.22 16.49-3.66l147.98-66.47c3.8-1.71 6.86-4.35 8.96-7.59 2.11-3.26 3.26-7.12 3.26-11.28v-75.61c0-4.16-1.16-8.02-3.26-11.28-2.1-3.25-5.16-5.89-8.96-7.59Z" style="fill:#9b9445; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
+                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M393.16 152.09 245.18 85.62c-5.43-2.44-10.95-3.66-16.48-3.66s-11.05 1.22-16.49 3.66L64.23 152.09c-3.8 1.71-6.85 4.35-8.96 7.59-2.11 3.26-3.26 7.12-3.26 11.28v75.61c0 4.16 1.16 8.02 3.26 11.28 2.11 3.25 5.16 5.89 8.96 7.59l147.98 66.47c5.43 2.44 10.96 3.66 16.49 3.66s11.05-1.22 16.49-3.66l147.98-66.47c3.8-1.71 6.86-4.35 8.96-7.59 2.11-3.26 3.26-7.12 3.26-11.28v-75.61c0-4.16-1.16-8.02-3.26-11.28-2.1-3.25-5.16-5.89-8.96-7.59Z" style="fill:#9b9445; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/>
+                    <path
+                    d="M310.34 124.2c-13.21-5.44-34.23-14.45-47.57-20.09-4.09-1.84-13.87-5.91-17.78-7.66-5.65-2.64-11.62-4.77-17.86-4.23-4.14.29-7.96 1.49-11.72 3.32-27.02 12.48-66.41 30.38-93.98 42.79-3.65 1.66-50.58 22.56-53.01 23.63-3.83 1.67-6.02 5.62-5.77 9.75-.03 1.03 0 3.78-.03 4.84-.07 12.86-.38 38.77-.53 51.63l-.19 12.91c.04 3.92-.73 8.45 1.71 11.8 1.07 1.61 2.62 2.91 4.4 3.79l5.82 2.76 11.66 5.53c5.84 2.7 17.49 8.37 23.29 11.16-5.95-2.45-17.89-7.47-23.81-10l-11.88-5.04-5.95-2.53c-2.12-.93-4.05-2.4-5.45-4.32-2.91-3.73-2.45-8.75-2.54-13.15l-.19-12.91c-.13-14.49-.49-40.39-.55-54.86l-.01-1.61c-.4-5.66 2.9-11.44 8.12-13.76 2.27-1.06 49.4-22.38 52.96-23.98 27.74-12.3 66.93-29.95 94.41-41.83 8.02-3.92 18.03-4.58 26.35-1.07 22.32 10.17 48 22.52 70.12 33.13Z"
+                    style= fill: "#fff",
+                  />
+                  <path
+                  d="M108.77 276.14c34.14 14.4 73.04 31.2 106.98 46.09 7.8 3.73 16.93 3.87 24.77.23 2.06-.9 8.4-3.83 10.58-4.81 41.87-19.16 96.07-43.5 137.97-62.2 4.39-2.1 5.91-6.1 5.61-10.8l.02-3.88.08-15.53c.09-14.24.31-40.32.44-54.35.05-5.03-3.01-8.62-7.6-10.36l-7.04-3.27-14.08-6.54c-15.97-7.33-40.45-19.1-56.17-26.51 7.14 3.04 21.49 9.05 28.6 12.15 9.47 4.06 33.7 14.42 42.82 18.42l7.13 3.1c2.6 1.05 5.18 2.5 6.88 4.81 1.82 2.34 2.75 5.29 2.78 8.19l.07 7.77.14 15.53c.08 10.38.27 36.58.31 46.59l.02 3.88c.47 6.3-2.14 12.07-8 14.91-41.79 18.97-96.15 43.29-138.27 61.9-1.91.81-8.71 3.88-10.68 4.72-8.78 3.95-19.28 3.61-27.85-.68-33.68-15.49-72.07-33.39-105.52-49.36Z"
+                  style=fill: "#c1bea4",
+                />
+                    </svg>`;
                     event.dataTransfer.setData("text/plain", updatedSvgString);
                   }}
                 >
@@ -1758,7 +1466,17 @@ const CanvasEscudo = (props, { handleClose }) => {
                   className={styles.stickers}
                   draggable="true"
                   onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M357.57 57.91c-.02-6.56-5.34-11.86-11.9-11.86H228.69v.12H111.72c-6.56 0-11.89 5.3-11.9 11.86-.13 47.32-.54 221.09.03 243.44 1.04 40.13 34.18 49.43 77.75 50.5 35.94.88 47.64 13.73 51.11 19.53v-.13c3.48-5.81 15.19-18.64 51.09-19.51 43.58-1.06 76.71-10.36 77.75-50.5.58-22.35.16-196.13.03-243.45Z" style="fill:#f5c211; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
+                    const updatedSvgString = `   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457.38 417.54">
+                    <g style="isolation: isolate;">
+                      <circle cx="228.69" cy="208.77" r="144.76" style="fill: #f5c211; stroke: #1d1d1b; strokeMiterlimit: 10; strokeWidth: 5;" transform="rotate(-45 228.696 208.771)" />
+                      <g style="mixBlendMode: soft-light;">
+                        <path d="M112.84 283.32c-27.47-39.47-31-92.82-9.97-135.97 24.71-51.53 80.07-83.05 137-77.44 17.74 1.69 35.13 6.87 50.82 15.29 5.17 2.72 10.28 5.96 15.02 9.35-52.87-34.44-127.31-27.24-171.68 17.51-45.71 43.45-54.5 117.65-21.19 171.26Z" style="fill: #fff; strokeWidth: 0;" />
+                      </g>
+                      <g style="mixBlendMode: multiply;">
+                        <path d="M305.71 94.54c53.79 34.5 76.26 102.66 54.4 162.6-20.55 57.27-78.57 95.45-139.34 91.05-38.64-2.3-75.53-21.79-99.22-52.33-2.82-3.55-6.26-8.71-8.72-12.56 3.49 4.95 7.74 10.55 11.78 14.97 15.94 17.88 36.73 31.57 59.45 39.14 69.41 23.54 146.44-13.06 171.8-81.84 21.91-58.59.79-124.99-50.16-161.04Z" style="strokeWidth: 0; fill: #e2d6b5;" />
+                      </g>
+                    </g>
+                  </svg>`;
                     event.dataTransfer.setData("text/plain", updatedSvgString);
                   }}
                 >
@@ -1817,7 +1535,16 @@ const CanvasEscudo = (props, { handleClose }) => {
                   className={styles.stickers}
                   draggable="true"
                   onDragStart={(event) => {
-                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M129.11 332.68h199.17c12.76 0 23.1-10.34 23.1-23.1V107.96c0-12.76-10.34-23.1-23.1-23.1H129.11c-12.76 0-23.1 10.34-23.1 23.1v201.62c0 12.76 10.34 23.1 23.1 23.1Z" style="fill:#db2d4d; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/></svg>`;
+                    const updatedSvgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 554.91 215.41"><path d="M129.11 332.68h199.17c12.76 0 23.1-10.34 23.1-23.1V107.96c0-12.76-10.34-23.1-23.1-23.1H129.11c-12.76 0-23.1 10.34-23.1 23.1v201.62c0 12.76 10.34 23.1 23.1 23.1Z" style="fill:#db2d4d; stroke: #1d1d1b; strokeLinecap: round; strokeLinejoin: round; strokeWidth: 10;"/>
+                    <path
+                    d="M328.28 91.36c-61.89 1.63-124.84 2.19-186.75 2.33-3.04.01-8.67.01-11.67.02-4.33-.15-8.68 1.64-11.5 4.98-2.64 2.93-3.68 6.92-3.49 10.8l-.03 13.34c-.1 57.43-.67 115.99-1.98 173.41l-.36 13.34-.36-13.34c-1.3-57.42-1.88-115.97-1.98-173.41l-.03-13.34c-.04-2.44.13-4.98.89-7.31 2.43-7.99 10.51-13.54 18.82-13.18 7.87.01 30.15.08 38.35.1 53.05.28 106.99.84 160.07 2.26Z"
+                    style= fill: "#fff",
+                  />
+                  <path
+                  d="M112.51 309.58c.1 8.86 7.94 16.36 16.73 16.03l3.74-.07c59.42-1.15 120.18-1.58 179.61-1.7l14.97-.03c2.26.04 4.3-.32 6.35-1.19 4.18-1.83 7.35-5.71 8.29-10.17.41-1.9.28-4.07.31-6.05 0-66.31.68-133.84 1.74-200.14-.64-8.08-7.78-14.82-15.98-14.92 4.99-.12 10.06 2.14 13.29 6.1 2.45 2.96 3.81 6.79 3.87 10.63l.07 3.74c1.15 59.42 1.59 120.18 1.7 179.61l.03 14.97c0 2.26.09 4.75-.38 7.01-1.6 8.14-8.97 14.62-17.26 15.06-55.27.12-111.47-.38-166.68-1.14l-29.94-.54-3.74-.07c-9.17.04-17.09-8.01-16.73-17.16Z"
+                  style=fill: "#e2b7c0",
+                />
+                    </svg>`;
                     event.dataTransfer.setData("text/plain", updatedSvgString);
                   }}
                 >
